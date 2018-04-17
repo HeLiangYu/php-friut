@@ -47,6 +47,7 @@
                 $(".recharge").css("display","block");
                 popObj = ".recharge";
             });
+            
             $(".add_newAccount").click(function(){
                 $(".mask").css("display","block");
                 $(".add_account").css("display","block");
@@ -65,6 +66,8 @@
                 $(".mask").hide();
                 $(popObj).hide();
             });
+
+            
         });
     </script>
 </head>
@@ -124,10 +127,7 @@
                                 <button class="end">禁用</button>
                                 <button class="ament">修改</button>
                                 <button class="width password">重置密码</button>
-                                <button class="top_up" value="<?php echo $id = $row['id']; ?>">删除</button>
-                                <!-- <input type="text" value="修改" onfocus="this.blur()"  class="ament">
-                                <input type="text" value="重置密码" onfocus="this.blur()"  class="width password">
-                                <input type="text" value="充值" onfocus="this.blur()"  class="top_up"> -->
+                                <button onclick="del(<?php echo $row['id']; ?>)" value="<?php echo $row['id']; ?>" id="delid">删除</button>
                             </p>
                         </td>
                     </tr>
@@ -206,7 +206,6 @@
             </p>
         </div>
 
-        <form action="./api/user/delete.php?id=1" method="get"> 
         <div class="recharge public_two">
             <p class="out_header">删除用户</p>
             <p class="name">确定要删除商家<span>【商家名称】</span>吗？</p>
@@ -217,7 +216,6 @@
                 <input type="text" value="确 认" class="ok" onfocus="this.blur();"> -->
             </p>
         </div>
-        </form>
 
         <div class="add_account public_two">
             <p class="revamp_title">新增账号</p>
@@ -251,9 +249,28 @@
             </p>
             <p class="sure">
                 <input type="text" value="取 消" class="del" onfocus="this.blur();">
-                <input type="text" value="确 认" class="ok" onfocus="this.blur();">
+                <input type="text" value="确 认" class="ok" id="del" onfocus="this.blur();" >
             </p>
         </div>
     </div>
 </body>
+<script>
+    function del(id){
+        // window.location.href="./api/user/delete.php?id="+id;
+                $(".mask").css("display","block");
+                $(".recharge").css("display","block");
+                popObj = ".recharge";
+                console.log(id);
+
+                function newdel(id){
+                    window.location.href="./api/user/delete.php?id="+id;
+                }
+                $("#del").click(function(){
+                    window.location.href="./api/user/delete.php?id="+id;
+                });
+            }
+
+            var id = $('#delid').val();
+            console.log(id);
+</script>
 </html>
