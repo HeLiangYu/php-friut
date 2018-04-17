@@ -1,0 +1,56 @@
+.content .con_con .right .query .submit{
+    float: none;
+    margin-left: 40px;
+}
+.content .con_con .right .query span{
+    margin-left: 40px;
+}
+.content .con_con .right .query .shop{
+    margin-left: 0;
+}
+.content .con_con .right .details .name{
+    width: 20%;
+}
+.content .con_con .right .details .class{
+    width: 20%;
+}
+/* .content .con_con .right .details .label{
+    width: 80px;
+}
+.content .con_con .right .details .price{
+    width: 200px;
+}
+.content .con_con .right .details .iforma{
+    width: 100px;
+}
+.content .con_con .right .details .now{
+    width: 130px;
+}
+.content .con_con .right .details .dispaly{
+    width: 110px;
+} */
+.content .con_con .right .details .new{
+    width: 20%;
+}
+.content .con_con .right .details .opret{
+    width: 40%;
+}
+/* .content .con_con .right .details .width{
+    width:60px;
+} */
+
+.mask .add_account{
+    top:10%;
+}
+.mask .revamp{
+    top:15%;
+}
+.mask .recharge{
+    width: 400px;
+}
+.mask .recharge p{
+    width: 380px;
+}
+.mask .recharge input{
+    width: 200px;
+}

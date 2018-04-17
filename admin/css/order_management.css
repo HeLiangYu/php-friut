@@ -1,0 +1,80 @@
+.content .con_con .right .query{
+    padding: 10px;
+    border: 1px solid #deddde;
+    background-color: #fff;
+    text-align: left;
+}
+.content .con_con .right .query p{
+    margin-top: 15px;
+}
+.content .con_con .right .query input{
+    height: 40px;
+    border: 1px solid #deddde;
+    margin-left: 5px;
+    width: 220px;
+}
+.content .con_con .right .query .shop{
+    margin-left: 40px;
+}
+.content .con_con .right .query select{
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #deddde;
+}
+.content .con_con .right .query .lookUp{
+    height: 40px;
+    width: 100px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 17px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .query .lookUp:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 10px;
+    background-color: #fff;
+}
+.content .con_con .right .details .title{
+    height: 45px;
+}
+.content .con_con .right .details th{
+    color: #007ce3;
+}
+.content .con_con .right .details td,th{
+    border: 1px solid #deddde;
+}
+.content .con_con .right .details .time{
+    width: 200px;
+}
+.content .con_con .right .details .shops{
+    width: 250px;
+}
+.content .con_con .right .details .user{
+    width: 250px;
+}
+.content .con_con .right .details .state{
+    width: 100px;
+}
+.content .con_con .right .details .handle{
+    width: 300px;
+}
+.content .con_con .right .details .operation{
+    width: 100px;
+}
+.content .con_con .right .details a{
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-decoration: none;
+}
+.content .con_con .right .details a:hover{
+    color: #148df1;
+}

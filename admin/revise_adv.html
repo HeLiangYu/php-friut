@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改广告</title>
+
+    <link href="css/public.css" type="text/css" rel="stylesheet"/>
+    <link href="css/addAdv.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="header">
+    <div class="header_size">
+        <p class="header_title">水果到家后台管理系统 </p>
+        <span class="header_exit">您好，admin&nbsp;&nbsp;&nbsp; <a href="#">退出</a></span>
+    </div>
+</div>
+
+<div class="content">
+    <div class="con_con">
+        <ul class="nav">
+            <li><a href="#">订单管理</a></li>
+            <li><a href="#">订单统计</a></li>
+            <li><a href="#">商品管理</a></li>
+            <li><a href="#" class="active">广告管理</a></li>
+            <li><a href="#">系统配置</a></li>
+            <li><a href="#">意见反馈</a></li>
+            <li><a href="#">商家账号管理</a></li>
+            <li><a href="#">后台账号管理</a></li>
+        </ul>
+
+        <div class="right">
+            <p class="title">修改广告</p>
+            <div class="details">
+                <p class="title2">广告标题<span>*</span>：<input type="text" placeholder="请输入标题"></p>
+                <p>
+                    广告图片&nbsp;&nbsp;：<input type="text" id="change_t1" class="pic" placeholder="请选择图片" onfocus="this.blur()">
+                    <input type="text" value="选择图片" class="sure" onfocus="this.blur()" onclick="document.getElementById('change_a1').click();">
+                    <input type="file" id="change_a1" class="file" onchange="document.getElementById('change_t1').value=this.value;">
+                </p>
+                <p class="text">提示：若不修改图片，则该项为空</p>
+                <p>
+                    广告内容<span>*</span>：
+                <div class="textarea"></div>
+                <input type="text" value="取 消" class="del" onfocus="this.blur();">
+                <input type="text" value="确 认" class="ok" onfocus="this.blur();">
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

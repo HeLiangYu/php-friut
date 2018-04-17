@@ -1,0 +1,21 @@
+.content .con_con .right .add{
+    margin-top: 0;
+}
+.content .con_con .right .details .name{
+    width: 300px;
+}
+.content .con_con .right .details .class{
+    width: 600px;
+}
+.content .con_con .right .details .opret{
+    width: 300px;
+}
+.content .con_con .right .details a{
+    width: 60px;
+}
+.content .con_con .right .details .width{
+    width: 60px;
+}
+.add_newAccount{
+    font-family: 微软雅黑;
+}

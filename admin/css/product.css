@@ -1,0 +1,244 @@
+.content .con_con .right .query{
+    padding: 10px;
+    border: 1px solid #deddde;
+    background-color: #fff;
+    text-align: left;
+}
+.content .con_con .right .query input{
+    height: 40px;
+    border: 1px solid #deddde;
+    margin-left: 5px;
+    width: 150px;
+}
+.content .con_con .right .query span{
+    margin-left: 10px;
+}
+.content .con_con .right .query .shop{
+    margin-left: 0px;
+}
+.content .con_con .right .query select{
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #deddde;
+    width: 80px;
+}
+.content .con_con .right .query .submit{
+    float: right;
+    height: 40px;
+    width: 100px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 17px;
+}
+.content .con_con .right .query .submit:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.content .con_con .right .add{
+    text-align: left;
+    margin-top: 10px;
+}
+.content .con_con .right .add input{
+    width: 150px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background-color: #007ce3;
+    border: 0;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .add input:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 10px;
+    background-color: #fff;
+}
+.content .con_con .right .details .title{
+    height: 45px;
+}
+.content .con_con .right .details th{
+    color: #007ce3;
+}
+.content .con_con .right .details td,th{
+    border: 1px solid #deddde;
+}
+.content .con_con .right .details .name{
+    width: 120px;
+}
+.content .con_con .right .details .class{
+    width: 100px;
+}
+.content .con_con .right .details .label{
+    width: 80px;
+}
+.content .con_con .right .details .price{
+    width: 60px;
+}
+.content .con_con .right .details .iforma{
+    width: 330px;
+}
+.content .con_con .right .details .now{
+    width: 90px;
+}
+.content .con_con .right .details .dispaly{
+    width: 120px;
+}
+.content .con_con .right .details .opret{
+    width: 300px;
+}
+.content .con_con .right .details a{
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    color:#fdd047;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    width: 40px;
+}
+.content .con_con .right .details .width{
+    width:90px;
+    text-align: right;
+}
+.content .con_con .right .details a:hover{
+    color: #148df1;
+}
+
+/*-------------mask----------------*/
+
+.mask .revamp{
+    top: 10%;
+}
+.mask .revamp input{
+    width: 380px;
+}
+.mask .revamp .inro{
+    border: 0;
+    width: 90px;
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.mask .revamp .in{
+    border-bottom: 1px solid #deddde;
+    padding-bottom: 25px;
+}
+.mask .revamp .file{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.mask .revamp .pic{
+    width: 70px;
+    height: 42px;
+    line-height: 40px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+    font-family: 微软雅黑;
+}
+.mask .revamp .pic:hover{
+    background-color: #148df1;
+}
+.mask .revamp .text{
+    width: 305px;
+}
+.mask .revamp textarea{
+    height: 100px;
+    resize: none;
+    margin-left: 100px;
+    margin-top: -15px;
+    margin-bottom: -10px;
+    width: 380px;
+}
+.mask .revamp .prompt{
+    display: inline-block;
+    color: rgb(153,153,153);
+    font-size: 11px;
+    margin-left: 90px;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: left;
+    margin-top: -5px;
+}
+.mask .revamp .money{
+    width: 360px;
+}
+.mask .add_adv{
+    top:10%;
+}
+.mask .add_adv input{
+    width: 380px;
+}
+.mask .add_adv .inro{
+    border: 0;
+    width: 90px;
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.mask .add_adv .in{
+    border-bottom: 1px solid #deddde;
+    padding-bottom: 25px;
+}
+.mask .add_adv .file{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.mask .add_adv .pic{
+    width: 70px;
+    height: 42px;
+    line-height: 42px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+    font-family: 微软雅黑;
+}
+.mask .add_adv .pic:hover{
+    background-color: #148df1;
+}
+.mask .add_adv .text{
+    width: 305px;
+}
+.mask .add_adv textarea{
+    height: 100px;
+    resize: none;
+    margin-left: 98px;
+    margin-top: -15px;
+    margin-bottom: -10px;
+    width: 383px;
+}
+.mask .add_adv .prompt{
+    display: inline-block;
+    color: rgb(153,153,153);
+    font-size: 11px;
+    margin-left: 90px;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: left;
+}
+.mask .add_adv .money{
+    width: 360px;
+}

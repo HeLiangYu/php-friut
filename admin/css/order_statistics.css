@@ -1,0 +1,78 @@
+.content .con_con .right .query{
+    padding: 10px;
+    border: 1px solid #deddde;
+    background-color: #fff;
+    text-align: left;
+}
+.content .con_con .right .query .two_p{
+    margin-top: 10px;
+}
+.content .con_con .right .query .two_p .export{
+    margin-top: 10px;
+}
+.content .con_con .right .query .two_p .submit{
+    margin-top: 10px;
+    margin-left: 110px;
+}
+.content .con_con .right .query input{
+    height: 40px;
+    border: 1px solid #deddde;
+    margin-left: 5px;
+    width: 220px;
+}
+.content .con_con .right .query .shop{
+    margin-left: 40px;
+}
+.content .con_con .right .query select{
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #deddde;
+    margin-top: 10px;
+}
+.content .con_con .right .query .submit{
+    float: none;
+    margin-left: 40px;
+}
+.content .con_con .right .query .export{
+    height: 40px;
+    width: 120px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 17px;
+    margin-left: 50px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .query .submit:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .query .export:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 10px;
+    background-color: #fff;
+}
+.content .con_con .right .details .title{
+    height: 45px;
+}
+.content .con_con .right .details th{
+    color: #007ce3;
+}
+.content .con_con .right .details td,th{
+    border: 1px solid #deddde;
+}
+.content .con_con .right .details .classification{
+    width: 400px;
+}
+.content .con_con .right .details .name{
+    width: 500px;
+}
+.content .con_con .right .details .number{
+    width: 300px;
+}

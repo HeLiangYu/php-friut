@@ -1,0 +1,111 @@
+.content .con_con .right .reward{
+    border: 1px solid #deddde;
+    text-align: left;
+    padding: 10px;
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.content .con_con .right .reward .span{
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+}
+.content .con_con .right .reward a{
+    color: #007ce3;
+    margin-left: 40px;
+}
+.content .con_con .right .reward a:hover{
+    color: rgb(254,159,33);
+}
+.content .con_con .right .reward .now{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.content .con_con .right .reward .now .link{
+    cursor: pointer;
+}
+.content .con_con .right .reward .change{
+    height: 40px;
+    line-height: 40px;
+    display: none;
+}
+.content .con_con .right .reward .change input{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-family: 微软雅黑;
+    width: 80px;
+}
+.content .con_con .right .reward .change .comp{
+    background-color: #007ce3;
+    color: #fff;
+    border: 0;
+    line-height: 40px;
+    text-align: center;
+    width: 100px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 17px;
+}
+.content .con_con .right .reward .change .del1{
+    background-color: rgb(208,208,208);
+    color: #fff;
+    border: 0;
+    line-height: 40px;
+    text-align: center;
+    width: 100px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 17px;
+}
+.content .con_con .right .reward .change span{
+    margin-left: 20px;
+}
+.content .con_con .right .reward .change .comp:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .reward .change .del1:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .return{
+    text-align: left;
+    margin-top: 10px;
+    border: 1px solid #deddde;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.content .con_con .right .return .textarea{
+    height: 600px;
+    width: 100%;
+    resize: none;
+    background-color: #fff;
+}
+.content .con_con .right .return a{
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #007ce3;
+    color: #FFFFFF;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+.content .con_con .right .return a:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .retu{
+    margin-bottom: 50px;
+}
+.content .con_con .right .return .title1{
+    height: 45px;
+    background-color: #007ce3;
+    line-height: 45px;
+    color: #FFFFFF;
+    padding-left: 5px;
+    font-size: 18px;
+}

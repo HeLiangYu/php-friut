@@ -1,0 +1,409 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html{
+	margin:0;
+	background-color:#f5f5f5;
+	height:100%;
+	font-family:微软雅黑;
+    color: rgb(102,102,102);
+    font-size: 15px;
+}
+
+/*---------header-----------*/
+.header{
+	width:100%;
+	height:100px;
+	line-height:100px;
+	background-color:#fff;
+	margin:0;
+    color: #007ce3;
+    border-bottom: 5px solid #007ce3;
+    text-align: center;
+}
+.header_size{
+	width:1400px;
+	margin:0 auto;
+    display: inline-block;
+}
+.header_size a{
+	line-height:10px;
+	color:#007ce3;
+	text-decoration:none;
+}
+.header_size a:hover{
+	color:rgb(254,159,33);
+}
+.header_exit{
+	float:right;
+	height:20px;
+	line-height:20px;
+	color:rgb(102,102,102);
+	margin-top:-25px;
+}
+.header .header_title{
+	width:688px;
+	line-height:100px;
+	color:#007ce3;
+	text-align:center;
+	font-size:35px;
+	font-weight:bold;
+	margin:0 auto;
+}
+
+/*-----------------content----------------*/
+.content{
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.content .con_con{
+    width: 1400px;
+    height: 500px;
+    margin: 0 auto;
+}
+.content .con_con .nav{
+    float: left;
+    width: 200px;
+    border: 1px solid #deddde;
+    font-family: 微软雅黑;
+    border-bottom: 0;
+}
+.content .con_con .nav li{
+    list-style: none;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-bottom: 1px solid #deddde;
+ }
+.content .con_con .nav li a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: rgb(102,102,102);
+    text-decoration: none;
+    font-size: 18px;
+}
+.content .con_con .nav li a:hover{
+    color: #fff;
+    background-color: #007ce3;
+}
+.content .con_con .nav li .active{
+    color: #fff;
+    background-color: #007ce3;
+}
+.content .con_con .right{
+    width: 1180px;
+    float: right;
+    height: 500px;
+    margin-bottom: 50px;
+}
+.content .con_con .right .query{
+    padding: 10px;
+    border: 1px solid #deddde;
+    background-color: #fff;
+    text-align: left;
+}
+.content .con_con .right .query input{
+    height: 40px;
+    width: 200px;
+    border: 1px solid #deddde;
+    margin-left: 5px;
+}
+.content .con_con .right .query select{
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #deddde;
+    width: 120px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .query select option{
+    height: 30px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .query .submit{
+    float: right;
+    height: 40px;
+    width: 100px;
+    background-color: #007ce3;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 0;
+    font-size: 17px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .query .submit:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 20px;
+    background-color: #fff;
+    width: 100%;
+}
+.content .con_con .right .title{
+    padding: 10px;
+    background-color: #007ce3;
+    color: #fff;
+    font-size: 18px;
+}
+.content .con_con .right .add{
+    text-align: left;
+    margin-top: 10px;
+}
+.content .con_con .right .add input{
+    width: 150px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background-color: #007ce3;
+    border: 0;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+.content .con_con .right .add input:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .add a{
+    width: 150px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background-color: #007ce3;
+    border: 0;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+.content .con_con .right .add a:hover{
+    background-color: #148df1;
+}
+.content .con_con .right .details{
+    border-collapse: collapse;
+    border: 1px solid #deddde;
+    margin-top: 10px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .details .title1{
+    height: 45px;
+    font-size: 18px;
+}
+.content .con_con .right .details img{
+    margin: 0 auto;
+}
+.content .con_con .right .details th {
+    color: #007ce3;
+    background-color: rgb(233, 233, 233);
+    font-size: 16px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .details td,th{
+    border: 1px solid #deddde;
+    height: 43px;
+    overflow: hidden;
+    text-align: center;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .details td span{
+    min-height: 23px;
+    max-height: 43px;
+    overflow: hidden;
+    padding: 0 10px;
+    display: inline-block;
+}
+.content .con_con .right .details .gray{
+    background-color: rgb(247,247,247);
+}
+.content .con_con .right table input{
+    color:rgb(254,159,33);
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 10px;
+    border: 0;
+    cursor: pointer;
+    width: 30px;
+    background-color: transparent;
+    text-align: center;
+    font-family: 微软雅黑;
+}
+.content .con_con .right table input:hover{
+    color: #148df1;
+}
+.content .con_con .right .details a{
+    color:rgb(254,159,33);
+    text-decoration: none;
+    font-size: 15px;
+    width: 40px;
+    margin-left: 10px;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .details .width{
+    width:100px;
+}
+.content .con_con .right .details a:hover{
+    color: #148df1;
+}
+.content .con_con .right .page{
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+}
+.content .con_con .right .page .left{
+    float: left;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .page .right{
+    float: right;
+    width: 400px;
+    height: 30px;
+    text-align: right;
+}
+.content .con_con .right .page .right span{
+    margin: 0 20px;
+}
+.content .con_con .right .page .right input{
+    color: rgb(102,102,102);
+    text-decoration: none;
+    width: 50px;
+    cursor: pointer;
+    background-color:#f5f5f5;
+    border: 0;
+    font-family: 微软雅黑;
+}
+.content .con_con .right .page .right input:hover{
+    color: #148df1;
+}
+.add_newAccount{
+    font-family: 微软雅黑;
+}
+
+/*-----------弹窗-------------*/
+.mask{
+    background:rgba(0,0,0,0.4);
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
+    display: none;
+}
+.mask .del{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 0;
+    background-color:rgb(208,208,208);
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-family: 微软雅黑;
+}
+.mask .del:hover{
+    background-color: #148df1;
+}
+.mask .ok{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 0;
+    background-color: #007ce3;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 30px;
+    font-family: 微软雅黑;
+}
+.mask .ok:hover{
+    background-color: #148df1;
+}
+.mask .out_header{
+    height: 50px;
+    line-height: 50px;
+    background-color: #007ce3;
+    color: #fff;
+    font-size: 18px;
+}
+.mask .name{
+    padding: 20px 10px;
+    border-bottom: 1px solid #deddde;
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+    width: 380px;
+}
+.mask .public_one{
+    width: 400px;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    top: 30%;
+    left: 40%;
+    z-index: 1001;
+    display: none;
+    padding-bottom: 20px;
+}
+.mask .public_two{
+    width: 500px;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    top: 20%;
+    left: 37%;
+    z-index: 1001;
+    display: none;
+    text-align: left;
+}
+.mask .public_two p{
+    width: 480px;
+    border-bottom: 1px solid #deddde;
+    padding:15px 10px;
+}
+.mask .public_two .revamp_title{
+    width: 100%;
+    height: 50px;
+    background-color: #007ce3;
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    padding: 0;
+    text-align: center;
+}
+.mask .public_two input{
+    height: 40px;
+    width: 360px;
+    line-height: 40px;
+}
+.mask .public_two p span{
+    color: red;
+}
+.mask .public_two .sure{
+    text-align: center;
+    padding-top: 0;
+}
+.mask .public_two .sure input{
+    width: 100px;
+}
+.mask .file{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

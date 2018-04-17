@@ -1,0 +1,15 @@
+.content .con_con .right .details{
+    margin-top: 0;
+}
+.content .con_con .right .details .name{
+    width: 200px;
+}
+.content .con_con .right .details .class{
+    width: 300px;
+}
+.content .con_con .right .details .label{
+    width: 200px;
+}
+.content .con_con .right .details .now{
+    width: 500px;
+}
