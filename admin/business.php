@@ -22,50 +22,50 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var popObj;
-            $(".end").click(function(){
-                $(".mask").css("display","block");
-                $(".disable").css("display","block");
-                popObj = ".disable";
-            });
-            $(".begin").click(function(){
-                $(".mask").css("display","block");
-                $(".disable_no").css("display","block");
-                popObj = ".disable_no";
-            });
-            $(".Delete").click(function(){
-                $(".mask").css("display","block");
-                $(".delete").css("display","block");
-                popObj = ".delete";
-            });
-            $(".ament").click(function(){
-                $(".mask").css("display","block");
-                $(".revamp").css("display","block");
-                popObj = ".revamp";
-            });
-            $(".top_up").click(function(){
-                $(".mask").css("display","block");
-                $(".recharge").css("display","block");
-                popObj = ".recharge";
-            });
+            // $(".end").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".disable").css("display","block");
+            //     popObj = ".disable";
+            // });
+            // $(".begin").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".disable_no").css("display","block");
+            //     popObj = ".disable_no";
+            // });
+            // $(".Delete").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".delete").css("display","block");
+            //     popObj = ".delete";
+            // });
+            // $(".ament").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".revamp").css("display","block");
+            //     popObj = ".revamp";
+            // });
+            // $(".top_up").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".recharge").css("display","block");
+            //     popObj = ".recharge";
+            // });
             
             $(".add_newAccount").click(function(){
                 $(".mask").css("display","block");
                 $(".add_account").css("display","block");
                 popObj = ".add_account";
             });
-            $(".password").click(function(){
-                $(".mask").css("display","block");
-                $(".reset").css("display","block");
-                popObj = ".reset";
-            });
-            $(".del").click(function(){
-                $(".mask").hide();
-                $(popObj).hide();
-            });
-            $(".ok").click(function(){
-                $(".mask").hide();
-                $(popObj).hide();
-            });
+            // $(".password").click(function(){
+            //     $(".mask").css("display","block");
+            //     $(".reset").css("display","block");
+            //     popObj = ".reset";
+            // });
+            // $(".del").click(function(){
+            //     $(".mask").hide();
+            //     $(popObj).hide();
+            // });
+            // $(".ok").click(function(){
+            //     $(".mask").hide();
+            //     $(popObj).hide();
+            // });
 
             
         });
@@ -94,7 +94,7 @@
             </ul>
 
             <div class="right">
-                <div class="query">
+                <!--<div class="query">
                     <span class="shop">商家账号：</span><input type="text">
                     <span>商品名称：</span><input type="text">
                     <span>账号状态：</span>
@@ -104,7 +104,7 @@
                         <option>禁用</option>
                     </select>
                     <input type="text" value="查 询" class="submit" onfocus="this.blur()">
-                </div>
+                </div>-->
 
                 <p class="add"><input type="text" value="新增用户"  onfocus="this.blur()" class="add_newAccount"></p>
 
@@ -125,9 +125,9 @@
                             <p>
                                 <!-- <input type="text" value="禁用" onfocus="this.blur()" class="end"> -->
                                 <button class="end">禁用</button>
-                                <button class="ament">修改</button>
-                                <button class="width password">重置密码</button>
-                                <button onclick="del(<?php echo $row['id']; ?>)" value="<?php echo $row['id']; ?>" id="delid">删除</button>
+                                <a href="./page/user/update.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>&password=<?php echo $row['password']; ?>">修改</a>
+                                <a href="./page/user/reset.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>">重置密码</button>
+                                <a href="./page/user/delete.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>">删除</a>
                             </p>
                         </td>
                     </tr>
@@ -166,111 +166,24 @@
             </p>
         </div>
 
-        <div class="reset public_one">
-            <p class="out_header">重置商家密码</p>
-            <p class="name">确定要重置商家<span>【商家名称】</span>密码吗？重置后的密码是123456</p>
-            <p>
-                <input type="text" value="取 消" class="del" onfocus="this.blur();">
-                <input type="text" value="确 认" class="ok" onfocus="this.blur();">
-            </p>
-        </div>
-
-        <div class="revamp public_two">
-            <p class="revamp_title">修改商家信息</p>
-            <p>
-                &nbsp;&nbsp;商家账号&nbsp;：&nbsp;&nbsp;&nbsp;XXXX
-            </p>
-            <p>
-                &nbsp;&nbsp;商家名称<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;商家地址<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;联系人<span>*</span>：
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;联系电话<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;推荐人账号：
-                <input type="text">
-            </p>
-            <p class="sure">
-                <input type="text" value="取 消" class="del" onfocus="this.blur();">
-                <input type="text" value="确 认" class="ok" onfocus="this.blur();">
-            </p>
-        </div>
-
-        <div class="recharge public_two">
-            <p class="out_header">删除用户</p>
-            <p class="name">确定要删除商家<span>【商家名称】</span>吗？</p>
-            <p class="sure">
-                <button class="del" tpe="reset">取消</button>
-                <button class="ok" type="submit">确认</button>
-                <!-- <input type="text" value="取 消" class="del" onfocus="this.blur();">
-                <input type="text" value="确 认" class="ok" onfocus="this.blur();"> -->
-            </p>
-        </div>
-
+        <form action="./api/user/insert.php" method="post">
         <div class="add_account public_two">
             <p class="revamp_title">新增账号</p>
             <p>
-                &nbsp;&nbsp;商家账号<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
+                &nbsp;&nbsp;用户账号<span>*</span>：
+                &nbsp;&nbsp;<input type="text" name="name">
             </p>
             <p>
-                &nbsp;&nbsp;商家密码<span>*</span>：
-                &nbsp;&nbsp;<input type="password">
-            </p>
-            <p>
-                &nbsp;&nbsp;商家名称<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;商家地址<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;联系人<span>*</span>：&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                &nbsp;&nbsp;联系电话<span>*</span>：
-                &nbsp;&nbsp;<input type="text">
-            </p>
-            <p>
-                推荐人账号：
-                &nbsp;&nbsp;<input type="text">
-            </p>
+                &nbsp;&nbsp;用户密码<span>*</span>：
+                &nbsp;&nbsp;<input type="password" name="password">
             <p class="sure">
                 <input type="text" value="取 消" class="del" onfocus="this.blur();">
-                <input type="text" value="确 认" class="ok" id="del" onfocus="this.blur();" >
+                <input type="submit" value="确 认" class="ok" onfocus="this.blur();" >
             </p>
         </div>
+        </form>
     </div>
 </body>
 <script>
-    function del(id){
-        // window.location.href="./api/user/delete.php?id="+id;
-                $(".mask").css("display","block");
-                $(".recharge").css("display","block");
-                popObj = ".recharge";
-                console.log(id);
-
-                function newdel(id){
-                    window.location.href="./api/user/delete.php?id="+id;
-                }
-                $("#del").click(function(){
-                    window.location.href="./api/user/delete.php?id="+id;
-                });
-            }
-
-            var id = $('#delid').val();
-            console.log(id);
 </script>
 </html>

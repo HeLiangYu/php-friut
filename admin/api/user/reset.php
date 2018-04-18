@@ -3,7 +3,7 @@
 
   $id=$_POST['id'];
   
-  $sql="delete from users where id={$id}";
+  $sql="update users set password='123456' where id={$id}";
 
   if(mysql_query($sql)){
     echo '<script>location="../../business.php"</script>';
