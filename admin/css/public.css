@@ -1,61 +1,74 @@
 @charset "utf-8";
+
 /* CSS Document */
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
-body,html{
-	margin:0;
-	background-color:#f5f5f5;
-	height:100%;
-	font-family:微软雅黑;
-    color: rgb(102,102,102);
+
+body,
+html {
+    margin: 0;
+    background-color: #f5f5f5;
+    height: 100%;
+    font-family: 微软雅黑;
+    color: rgb(102, 102, 102);
     font-size: 15px;
 }
 
+
 /*---------header-----------*/
-.header{
-	width:100%;
-	height:100px;
-	line-height:100px;
-	background-color:#fff;
-	margin:0;
+
+.header {
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background-color: #fff;
+    margin: 0;
     color: #007ce3;
     border-bottom: 5px solid #007ce3;
     text-align: center;
 }
-.header_size{
-	width:1400px;
-	margin:0 auto;
+
+.header_size {
+    width: 1400px;
+    margin: 0 auto;
     display: inline-block;
 }
-.header_size a{
-	line-height:10px;
-	color:#007ce3;
-	text-decoration:none;
-}
-.header_size a:hover{
-	color:rgb(254,159,33);
-}
-.header_exit{
-	float:right;
-	height:20px;
-	line-height:20px;
-	color:rgb(102,102,102);
-	margin-top:-25px;
-}
-.header .header_title{
-	width:688px;
-	line-height:100px;
-	color:#007ce3;
-	text-align:center;
-	font-size:35px;
-	font-weight:bold;
-	margin:0 auto;
+
+.header_size a {
+    line-height: 10px;
+    color: #007ce3;
+    text-decoration: none;
 }
 
+.header_size a:hover {
+    color: rgb(254, 159, 33);
+}
+
+.header_exit {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    color: rgb(102, 102, 102);
+    margin-top: -25px;
+}
+
+.header .header_title {
+    width: 688px;
+    line-height: 100px;
+    color: #007ce3;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+
 /*-----------------content----------------*/
-.content{
+
+.content {
     width: 100%;
     margin: 0 auto;
     display: inline-block;
@@ -63,72 +76,84 @@ body,html{
     margin-top: 20px;
     margin-bottom: 50px;
 }
-.content .con_con{
+
+.content .con_con {
     width: 1400px;
     height: 500px;
     margin: 0 auto;
 }
-.content .con_con .nav{
+
+.content .con_con .nav {
     float: left;
     width: 200px;
     border: 1px solid #deddde;
     font-family: 微软雅黑;
     border-bottom: 0;
 }
-.content .con_con .nav li{
+
+.content .con_con .nav li {
     list-style: none;
     width: 100%;
     height: 45px;
     text-align: center;
     line-height: 45px;
     border-bottom: 1px solid #deddde;
- }
-.content .con_con .nav li a{
+}
+
+.content .con_con .nav li a {
     display: inline-block;
     width: 100%;
     height: 100%;
-    color: rgb(102,102,102);
+    color: rgb(102, 102, 102);
     text-decoration: none;
     font-size: 18px;
 }
-.content .con_con .nav li a:hover{
+
+.content .con_con .nav li a:hover {
     color: #fff;
     background-color: #007ce3;
 }
-.content .con_con .nav li .active{
+
+.content .con_con .nav li .active {
     color: #fff;
     background-color: #007ce3;
 }
-.content .con_con .right{
+
+.content .con_con .right {
     width: 1180px;
     float: right;
     height: 500px;
     margin-bottom: 50px;
 }
-.content .con_con .right .query{
+
+.content .con_con .right .query {
     padding: 10px;
     border: 1px solid #deddde;
     background-color: #fff;
     text-align: left;
 }
-.content .con_con .right .query input{
+
+.content .con_con .right .query input {
     height: 40px;
     width: 200px;
     border: 1px solid #deddde;
     margin-left: 5px;
 }
-.content .con_con .right .query select{
+
+.content .con_con .right .query select {
     height: 40px;
     font-size: 16px;
     border: 1px solid #deddde;
     width: 120px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .query select option{
+
+.content .con_con .right .query select option {
     height: 30px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .query .submit{
+
+.content .con_con .right .query .submit {
     float: right;
     height: 40px;
     width: 100px;
@@ -141,27 +166,32 @@ body,html{
     font-size: 17px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .query .submit:hover{
+
+.content .con_con .right .query .submit:hover {
     background-color: #148df1;
 }
-.content .con_con .right .details{
+
+.content .con_con .right .details {
     border-collapse: collapse;
     border: 1px solid #deddde;
     margin-top: 20px;
     background-color: #fff;
     width: 100%;
 }
-.content .con_con .right .title{
+
+.content .con_con .right .title {
     padding: 10px;
     background-color: #007ce3;
     color: #fff;
     font-size: 18px;
 }
-.content .con_con .right .add{
+
+.content .con_con .right .add {
     text-align: left;
     margin-top: 10px;
 }
-.content .con_con .right .add input{
+
+.content .con_con .right .add input {
     width: 150px;
     height: 45px;
     line-height: 45px;
@@ -172,10 +202,12 @@ body,html{
     font-size: 16px;
     cursor: pointer;
 }
-.content .con_con .right .add input:hover{
+
+.content .con_con .right .add input:hover {
     background-color: #148df1;
 }
-.content .con_con .right .add a{
+
+.content .con_con .right .add a {
     width: 150px;
     height: 45px;
     line-height: 45px;
@@ -188,47 +220,58 @@ body,html{
     display: inline-block;
     text-decoration: none;
 }
-.content .con_con .right .add a:hover{
+
+.content .con_con .right .add a:hover {
     background-color: #148df1;
 }
-.content .con_con .right .details{
+
+.content .con_con .right .details {
     border-collapse: collapse;
     border: 1px solid #deddde;
     margin-top: 10px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .details .title1{
+
+.content .con_con .right .details .title1 {
     height: 45px;
     font-size: 18px;
 }
-.content .con_con .right .details img{
+
+.content .con_con .right .details img {
     margin: 0 auto;
+    margin: 5px;
 }
+
 .content .con_con .right .details th {
     color: #007ce3;
     background-color: rgb(233, 233, 233);
     font-size: 16px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .details td,th{
+
+.content .con_con .right .details td,
+th {
     border: 1px solid #deddde;
     height: 43px;
     overflow: hidden;
     text-align: center;
     font-family: 微软雅黑;
 }
-.content .con_con .right .details td span{
+
+.content .con_con .right .details td span {
     min-height: 23px;
     max-height: 43px;
     overflow: hidden;
-    padding: 0 10px;
+    padding: 0 7px;
     display: inline-block;
 }
-.content .con_con .right .details .gray{
-    background-color: rgb(247,247,247);
+
+.content .con_con .right .details .gray {
+    background-color: rgb(247, 247, 247);
 }
-.content .con_con .right table input{
-    color:rgb(254,159,33);
+
+.content .con_con .right table input {
+    color: rgb(254, 159, 33);
     text-decoration: none;
     font-size: 15px;
     margin-left: 10px;
@@ -239,75 +282,89 @@ body,html{
     text-align: center;
     font-family: 微软雅黑;
 }
-.content .con_con .right table input:hover{
+
+.content .con_con .right table input:hover {
     color: #148df1;
 }
-.content .con_con .right .details a{
-    color:rgb(254,159,33);
+
+.content .con_con .right .details a {
+    color: rgb(254, 159, 33);
     text-decoration: none;
     font-size: 15px;
     width: 40px;
     margin-left: 10px;
     font-family: 微软雅黑;
 }
-.content .con_con .right .details .width{
-    width:100px;
+
+.content .con_con .right .details .width {
+    width: 100px;
 }
-.content .con_con .right .details a:hover{
+
+.content .con_con .right .details a:hover {
     color: #148df1;
 }
-.content .con_con .right .page{
+
+.content .con_con .right .page {
     display: inline-block;
     width: 100%;
     margin-top: 5px;
 }
-.content .con_con .right .page .left{
+
+.content .con_con .right .page .left {
     float: left;
     font-family: 微软雅黑;
 }
-.content .con_con .right .page .right{
+
+.content .con_con .right .page .right {
     float: right;
     width: 400px;
     height: 30px;
     text-align: right;
 }
-.content .con_con .right .page .right span{
+
+.content .con_con .right .page .right span {
     margin: 0 20px;
 }
-.content .con_con .right .page .right input{
-    color: rgb(102,102,102);
+
+.content .con_con .right .page .right input {
+    color: rgb(102, 102, 102);
     text-decoration: none;
     width: 50px;
     cursor: pointer;
-    background-color:#f5f5f5;
+    background-color: #f5f5f5;
     border: 0;
     font-family: 微软雅黑;
 }
-.content .con_con .right .page .right input:hover{
+
+.content .con_con .right .page .right input:hover {
     color: #148df1;
 }
-.add_newAccount{
+
+.add_newAccount {
     font-family: 微软雅黑;
 }
 
+
 /*-----------弹窗-------------*/
-.mask{
-    background:rgba(0,0,0,0.4);
-    height:100%;
-    width:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1000;
+
+.mask {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     display: none;
 }
-.mask .del{
+
+.mask .del {
     width: 100px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     border: 0;
-    background-color:rgb(208,208,208);
+    background-color: rgb(208, 208, 208);
     color: #fff;
     font-size: 17px;
     cursor: pointer;
@@ -315,10 +372,12 @@ body,html{
     margin-bottom: 0;
     font-family: 微软雅黑;
 }
-.mask .del:hover{
+
+.mask .del:hover {
     background-color: #148df1;
 }
-.mask .ok{
+
+.mask .ok {
     width: 100px;
     height: 40px;
     line-height: 40px;
@@ -332,17 +391,20 @@ body,html{
     margin-left: 30px;
     font-family: 微软雅黑;
 }
-.mask .ok:hover{
+
+.mask .ok:hover {
     background-color: #148df1;
 }
-.mask .out_header{
+
+.mask .out_header {
     height: 50px;
     line-height: 50px;
     background-color: #007ce3;
     color: #fff;
     font-size: 18px;
 }
-.mask .name{
+
+.mask .name {
     padding: 20px 10px;
     border-bottom: 1px solid #deddde;
     width: 100%;
@@ -350,7 +412,8 @@ body,html{
     text-align: left;
     width: 380px;
 }
-.mask .public_one{
+
+.mask .public_one {
     width: 400px;
     text-align: center;
     background-color: #fff;
@@ -361,7 +424,8 @@ body,html{
     display: none;
     padding-bottom: 20px;
 }
-.mask .public_two{
+
+.mask .public_two {
     width: 500px;
     text-align: center;
     background-color: #fff;
@@ -372,12 +436,14 @@ body,html{
     display: none;
     text-align: left;
 }
-.mask .public_two p{
+
+.mask .public_two p {
     width: 480px;
     border-bottom: 1px solid #deddde;
-    padding:15px 10px;
+    padding: 15px 10px;
 }
-.mask .public_two .revamp_title{
+
+.mask .public_two .revamp_title {
     width: 100%;
     height: 50px;
     background-color: #007ce3;
@@ -387,22 +453,27 @@ body,html{
     padding: 0;
     text-align: center;
 }
-.mask .public_two input{
+
+.mask .public_two input {
     height: 40px;
     width: 360px;
     line-height: 40px;
 }
-.mask .public_two p span{
+
+.mask .public_two p span {
     color: red;
 }
-.mask .public_two .sure{
+
+.mask .public_two .sure {
     text-align: center;
     padding-top: 0;
 }
-.mask .public_two .sure input{
+
+.mask .public_two .sure input {
     width: 100px;
 }
-.mask .file{
+
+.mask .file {
     width: 0;
     height: 0;
     overflow: hidden;

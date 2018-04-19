@@ -1,3 +1,11 @@
+<?php
+    include '../public/common/config.php';
+
+    $sql = "select shop.*, brand.name bname, class.name cname from shop, brand, class where brand.class_id=class.id and shop.brand_id=brand.id";
+    
+    $rst = mysql_query($sql); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +32,7 @@
 <body>
     <div class="header">
         <div class="header_size">
-            <p class="header_title">水果到家后台管理系统 </p>
+            <p class="header_title">鲜果集后台管理系统 </p>
             <span class="header_exit">您好，admin&nbsp;&nbsp;&nbsp; <a href="#">退出</a></span>
         </div>
     </div>
@@ -67,30 +75,42 @@
                 <table class="details">
                     <tr>
                         <th class="label">商品编号</th>
-                        <th class="name">商品名称</th>
+                        <th class="iforma">商品名称</th>
                         <th class="dispaly">商品分类</th>
-                        <th class="class">商品类别</th>
-                        <th class="price">商品价格</th>
+                        <th class="name">商品类别</th>
+                        <th class="name">商品价格</th>
                         <th class="iforma">商品图片</th>
                         <th class="now">商品库存</th>
                         <th class="now">上下架</th>
                         <th class="opret">操作</th>
                     </tr>
 
+                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
                     <tr>
-                        <td class="name"><span>越芒</span></td>
-                        <td class="class"><span>水果</span></td>
-                        <td class="label"><span>XXXXXXX</span></td>
-                        <td class="price"><span>ＸＸＸＸＸＸ</span></td>
-                        <td class="iforma"><span>XXXXXX</span></td>
-                        <td class="now"><span>启用</span></td>
-                        <td class="dispaly"><span>否</span></td>
-                        <td class="dispaly"><span>1</span></td>
+                        <td class="name"><span><?php echo $row['id']; ?></span></td>
+                        <td class="iforma"><span><?php echo $row['name']; ?></span></td>
+                        <td class="label"><span><?php echo $row['cname']; ?></span></td>
+                        <td class="price"><span><?php echo $row['bname']; ?></span></td>
+                        <td class="name"><span>￥ <?php echo $row['price']; ?>/kg</span></td>
+                        <td class="now"><img src="../public/uploads/<?php echo $row['img']; ?>" style="width:100px;" /></td>
+                        <td class="dispaly"><span><?php echo $row['stock']; ?></span></td>
+                        <td class="dispaly">
+                            <span>
+                                <?php
+                                    if($row['shelf']){
+                                        echo '上架';
+                                    }else{
+                                        echo '下架';
+                                    }
+                                ?>
+                            </span>
+                        </td>
                         <td class="opret">
                             <a href="./page/shop/update.php" class="ament">修改</a>
-                            <a href="./page/shop/delete.php" class="Delete">删除</a>
+                            <a href="./page/shop/delete.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>&classname=<?php echo $row['cname']; ?>&brandname=<?php echo $row['bname']; ?>&img=<?php echo $row['img']; ?>" class="Delete">删除</a>
                         </td>
                     </tr>
+                    <?php } ?>
                 </table>
 
                 <div class="page">
@@ -107,41 +127,64 @@
 
     <!----------mask--------- -->
     <div class="mask">
+    <form action="./api/shop/insert.php" method="post" enctype="multipart/form-data">
         <div class="add_adv public_two">
             <p class="revamp_title">新增商品</p>
             <p>
                  商品名称<span>*</span>：
-                <input type="text">
+                <input type="text" name="name">
             </p>
             <p>
                  商品图片<span>*</span>：
                 <input type="text" id="change_t2" class="text"onfocus="this.blur()">
                 <input type="text" value="选择图片" class="pic" onfocus="this.blur();" onclick="document.getElementById('change_a2').click();">
-                <input type="file" id="change_a2" class="file" onchange="document.getElementById('change_t2').value=this.value;">
+                <input type="file" id="change_a2" class="file" onchange="document.getElementById('change_t2').value=this.value;" name="img">
             </p>
             <p>
                  商品价格<span>*</span>：
-                <input type="text" class="money"> 元
+                <input type="text" class="money" name="price"> 元
             </p>
+            <?php 
+                    $classql = "select * from class";
+                    $classrst = mysql_query($classql); 
+            ?>
             <p>
                  商品类别<span>*</span>：
-                <input type="text">
+                <select name="brand_id">
+                    <?php while($classrow=mysql_fetch_assoc($classrst)){ ?>
+                        <option disabled="disabled">
+                            <?php 
+                                echo $classrow['name']; 
+                                $brandsql = "select * from brand where class_id={$classrow['id']}";
+                                $brandrst = mysql_query($brandsql);
+                                while($brandrow=mysql_fetch_assoc($brandrst)){
+                            ?>
+                                <option value="<?php echo $brandrow['id']; ?>">
+                                    &nbsp;&nbsp;<?php echo $brandrow['name']; ?>
+                                </option>
+                            <?php }
+                            ?>
+                        </option>
+                    <?php } ?>
+                </select>
             </p>
             <p>
-                 标签 ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text">
+                 货&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;架<span>*</span>：
+                 <input type="radio" name="shelf" value="1" id="up" checked="checked" style="width:15px;height:15px;vertical-align:middle;">
+                 <label for="up" style="vertical-align:top;">上架</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                 <input type="radio" name="shelf" value="0" id="down" style="width:15px;height:15px;vertical-align:middle;">
+                 <label for="down" style="vertical-align:top;">下架</label>
             </p>
-            <div class="in">
-                <p class="inro">
-                    商品简介<span>*</span>：
-                </p>
-                <textarea></textarea>
-            </div>
+            <p>
+                 库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存<span>*</span>：
+                <input type="text" name="stock">
+            </p>
             <p class="sure">
                 <a href="product.php"class="del">取消</a>
-                <input type="text" value="确 认" class="ok" onfocus="this.blur();">
+                <input type="submit" value="确 认" class="ok" onfocus="this.blur();">
             </p>
         </div>
+        </form>
     </div>
 </body>
 </html>
