@@ -43,11 +43,11 @@
         <div class="con_con">
             <ul class="nav">
                 <li><a href="#">订单管理</a></li>
-                <li><a href="#">订单统计</a></li>
                 <li><a href="product.php">商品管理</a></li>
                 <li><a href="#">广告管理</a></li>
+                <li><a href="status.php">状态管理</a></li>
                 <li><a href="class.php">分类管理</a></li>
-                <li><a href="#">意见反馈</a></li>
+                <li><a href="comment.php">评论管理</a></li>
                 <li><a href="business.php" class="active">用户账号管理</a></li>
                 <li><a href="#">后台账号管理</a></li>
             </ul>

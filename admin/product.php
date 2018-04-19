@@ -40,12 +40,12 @@
     <div class="content">
         <div class="con_con">
             <ul class="nav">
-                <li><a href="#">订单管理</a></li>
-                <li><a href="#">订单统计</a></li>
+            <li><a href="#">订单管理</a></li>
                 <li><a href="product.php" class="active">商品管理</a></li>
                 <li><a href="#">广告管理</a></li>
+                <li><a href="status.php">状态管理</a></li>
                 <li><a href="class.php">分类管理</a></li>
-                <li><a href="#">意见反馈</a></li>
+                <li><a href="comment.php">评论管理</a></li>
                 <li><a href="business.php">用户账号管理</a></li>
                 <li><a href="#">后台账号管理</a></li>
             </ul>
@@ -92,7 +92,7 @@
                         <td class="label"><span><?php echo $row['cname']; ?></span></td>
                         <td class="price"><span><?php echo $row['bname']; ?></span></td>
                         <td class="name"><span>￥ <?php echo $row['price']; ?>/kg</span></td>
-                        <td class="now"><img src="../public/uploads/<?php echo $row['img']; ?>" style="width:100px;" /></td>
+                        <td class="now"><img src="../public/uploads/thumb_<?php echo $row['img']; ?>" style="width:100px;" /></td>
                         <td class="dispaly"><span><?php echo $row['stock']; ?></span></td>
                         <td class="dispaly">
                             <span>
@@ -106,7 +106,7 @@
                             </span>
                         </td>
                         <td class="opret">
-                            <a href="./page/shop/update.php" class="ament">修改</a>
+                            <a href="./page/shop/update.php?id=<?php echo $row['id']; ?>" class="ament">修改</a>
                             <a href="./page/shop/delete.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>&classname=<?php echo $row['cname']; ?>&brandname=<?php echo $row['bname']; ?>&img=<?php echo $row['img']; ?>" class="Delete">删除</a>
                         </td>
                     </tr>
@@ -128,7 +128,7 @@
     <!----------mask--------- -->
     <div class="mask">
     <form action="./api/shop/insert.php" method="post" enctype="multipart/form-data">
-        <div class="add_adv public_two">
+        <div class="add_adv public_two" style="margin-top:10%;">
             <p class="revamp_title">新增商品</p>
             <p>
                  商品名称<span>*</span>：

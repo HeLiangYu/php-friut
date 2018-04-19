@@ -1,7 +1,8 @@
 <?php
+    date_default_timezone_set("Asia/Shanghai");
     include '../public/common/config.php';
 
-    $sql = "select brand.*, class.name cname from brand, class where brand.class_id=class.id";
+    $sql = "select comment.*, shop.name sname, users.username uname from comment, shop, users where comment.user_id=users.id and comment.shop_id=shop.id";
     
     $rst = mysql_query($sql); 
 ?>
@@ -44,31 +45,32 @@
                 <li><a href="product.php">商品管理</a></li>
                 <li><a href="#">广告管理</a></li>
                 <li><a href="status.php">状态管理</a></li>
-                <li><a href="class.php" class="active">分类管理</a></li>
-                <li><a href="comment.php">评论管理</a></li>
+                <li><a href="class.php">分类管理</a></li>
+                <li><a href="comment.php" class="active">评论管理</a></li>
                 <li><a href="business.php">用户账号管理</a></li>
                 <li><a href="#">后台账号管理</a></li>
             </ul>
 
             <div class="right">
-                <p class="add"><input type="text" value="新增类别"  onfocus="this.blur()" class="add_newAdv"></p>
-
                 <table class="details">
                     <tr>
-                        <th class="name">类别ID</th>
-                        <th class="name">分类名称</th>
-                        <th class="name">类别名称</th>
-                        <th class="opret">操作</th>
+                        <th class="name">ID</th>
+                        <th class="name">用户</th>
+                        <th class="name">商品名称</th>
+                        <th class="opret">评论</th>
+                        <th class="name">时间</th>
+                        <th class="name">操作</th>
                     </tr>
                     
                     <?php while($row=mysql_fetch_assoc($rst)){ ?>
                     <tr>
                         <td class="name"><span><?php echo $row['id']; ?></span></td>
-                        <td class="name"><?php echo $row['cname']; ?></td>
-                        <td class="name"><span><?php echo $row['name']; ?></span></td>
-                        <td class="opret">
-                            <a href="./page/class/update.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>&class_id=<?php echo $row['class_id']; ?>" class="ament">修改</a>
-                            <a href="./page/class/delete.php?id=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>&classname=<?php echo $row['cname']; ?>" class="Delete">删除</a>
+                        <td class="name"><?php echo $row['uname']; ?></td>
+                        <td class="name"><span><?php echo $row['sname']; ?></span></td>
+                        <td class="opret"><p style="padding:10px 5px;"><?php echo $row['content'] ?></p></th>
+                        <td class="name"><span><?php echo date("Y-m-d H:i", $row['time']); ?></span></th>
+                        <td class="name">
+                            <a href="./page/comment/delete.php?id=<?php echo $row['id']; ?>&content=<?php echo $row['content']; ?>" class="Delete">删除</a>
                         </td>
                     </tr>
                     <?php } ?>

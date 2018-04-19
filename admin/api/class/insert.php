@@ -1,5 +1,4 @@
 <?php
-  // 添加新用户
   include '../../../public/common/config.php';
 
   $name = $_POST['name'];

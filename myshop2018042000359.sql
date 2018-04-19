@@ -52,7 +52,7 @@ CREATE TABLE `brand` (
   `name` varchar(50) NOT NULL,
   `class_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'浆果类',12),(2,'浆果类',11),(3,'柑橘类',11),(4,'柑橘类',12),(5,'核果类',11),(6,'核果类',12),(7,'仁果类',11),(8,'仁果类',12),(13,'瓜类',11),(10,'瓜类',12),(11,'其他',12),(12,'其他',11);
+INSERT INTO `brand` VALUES (1,'浆果类',12),(2,'浆果类',11),(3,'柑橘类',11),(4,'柑橘类',12),(5,'核果类',11),(6,'核果类',12),(7,'仁果类',11),(8,'仁果类',12),(13,'瓜类',11),(10,'瓜类',12),(11,'其他',12),(12,'其他',11),(14,'已付款',0);
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,8 +102,9 @@ CREATE TABLE `comment` (
   `time` int(11) NOT NULL,
   `content` text,
   `shop_id` int(11) NOT NULL,
+  `nowtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,6 +113,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (6,5,1524152971,'546比特',13,'2018-04-19 15:49:31'),(7,2,1524152971,'45v浮点数浮点数',14,'2018-04-19 15:49:31'),(8,4,1524153134,'发的深VV型吧二万五',13,'2018-04-19 15:52:14'),(9,3,1524153134,'额挖去',14,'2018-04-19 15:52:14');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +185,7 @@ CREATE TABLE `shop` (
   `brand_id` int(11) NOT NULL,
   `shelf` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +194,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
+INSERT INTO `shop` VALUES (7,'','',0,0,0,0),(14,'52452','1524149191341709103.jpg',4324,51,11,0),(13,'哦哦哦','1524149301435750068.jpg',2131,213,3,0);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +209,7 @@ CREATE TABLE `status` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +218,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES (1,'未接单'),(2,'已发货'),(4,'配送中'),(5,'已发货'),(6,'退货中'),(7,'已付款');
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-19 18:29:38
+-- Dump completed on 2018-04-20  0:35:10
