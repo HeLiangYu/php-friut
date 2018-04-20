@@ -40,7 +40,7 @@
     <div class="content">
         <div class="con_con">
             <ul class="nav">
-                <li><a href="#">订单管理</a></li>
+                <li><a href="indent_m.php">订单管理</a></li>
                 <li><a href="product.php">商品管理</a></li>
                 <li><a href="adv.php">广告管理</a></li>
                 <li><a href="status.php">状态管理</a></li>
