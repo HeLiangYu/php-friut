@@ -27,8 +27,11 @@ CREATE TABLE `advert` (
   `img` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL,
   `pos` tinyint(4) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +40,7 @@ CREATE TABLE `advert` (
 
 LOCK TABLES `advert` WRITE;
 /*!40000 ALTER TABLE `advert` DISABLE KEYS */;
+INSERT INTO `advert` VALUES (1,'12.jpg','cfgs',0,12,7,'头部'),(2,'15241989272060673611.jpg','trysd',0,11,2,'底部');
 /*!40000 ALTER TABLE `advert` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,31 +122,6 @@ INSERT INTO `comment` VALUES (6,5,1524152971,'546比特',13,'2018-04-19 15:49:31
 UNLOCK TABLES;
 
 --
--- Table structure for table `homeabroad`
---
-
-DROP TABLE IF EXISTS `homeabroad`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `homeabroad` (
-  `id` int(10) unsigned NOT NULL,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `homeabroad`
---
-
-LOCK TABLES `homeabroad` WRITE;
-/*!40000 ALTER TABLE `homeabroad` DISABLE KEYS */;
-INSERT INTO `homeabroad` VALUES (0,'进口水果');
-/*!40000 ALTER TABLE `homeabroad` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `indent`
 --
 
@@ -167,6 +146,33 @@ CREATE TABLE `indent` (
 LOCK TABLES `indent` WRITE;
 /*!40000 ALTER TABLE `indent` DISABLE KEYS */;
 /*!40000 ALTER TABLE `indent` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `littleadvert`
+--
+
+DROP TABLE IF EXISTS `littleadvert`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `littleadvert` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(100) NOT NULL,
+  `option` int(10) NOT NULL,
+  `content` varchar(100) NOT NULL,
+  `img` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `littleadvert`
+--
+
+LOCK TABLES `littleadvert` WRITE;
+/*!40000 ALTER TABLE `littleadvert` DISABLE KEYS */;
+INSERT INTO `littleadvert` VALUES (15,'4352',1,'fdsd','12.jpg'),(16,'3435',2,'twttr','12.jpg'),(17,'4325345435',3,'仿佛是个retreat','15242063541328838658.jpg'),(18,'ffg',4,'gsfdg','12.jpg');
+/*!40000 ALTER TABLE `littleadvert` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -285,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-20  0:35:10
+-- Dump completed on 2018-04-20 15:36:27

@@ -42,7 +42,7 @@
             <ul class="nav">
                 <li><a href="#">订单管理</a></li>
                 <li><a href="product.php">商品管理</a></li>
-                <li><a href="#">广告管理</a></li>
+                <li><a href="adv.php">广告管理</a></li>
                 <li><a href="status.php">状态管理</a></li>
                 <li><a href="class.php" class="active">分类管理</a></li>
                 <li><a href="comment.php">评论管理</a></li>
