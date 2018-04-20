@@ -58,7 +58,6 @@
                     <tr>
                         <th class="name">商家账号</th>
                         <th class="class">商家名称</th>
-                        <th class="new">账号状态</th>
                         <th class="opret">操作</th>
                     </tr>
 
@@ -66,11 +65,9 @@
                     <tr>
                         <td class="name"><p><?php echo $row['username']; ?></p></td>
                         <td class="class"><p><?php echo $row['username']; ?></p></td>
-                        <td class="new"><p>启用</p></td>
                         <td class="opret">
                             <p>
                                 <!-- <input type="text" value="禁用" onfocus="this.blur()" class="end"> -->
-                                <button class="end">禁用</button>
                                 <a href="./page/user/update.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>&password=<?php echo $row['password']; ?>">修改</a>
                                 <a href="./page/user/reset.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>">重置密码</button>
                                 <a href="./page/user/delete.php?id=<?php echo $row['id']; ?>&username=<?php echo $row['username']; ?>">删除</a>

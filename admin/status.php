@@ -78,15 +78,6 @@
                         </tr>
                     <?php } ?>
                 </table>
-
-                <div class="page">
-                    <p class="left">共2条</p>
-                    <p class="right">
-                        <input type="text" value="<上一条" onfocus="this.blur()">
-                        <span>1/2</span>
-                        <input type="text" value="下一条>" onfocus="this.blur()">
-                    </p>
-                </div>
             </div>
         </div>
     </div>

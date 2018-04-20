@@ -2,10 +2,8 @@
     include '../../../public/common/config.php';
 
     $id = $_GET['id'];
-
-    $sql = "select * from littleadvert where id='{$id}'";
-    $rst = mysql_query($sql); 
-    $row = mysql_fetch_assoc($rst);
+    $option = $_GET['option'];
+    $title = $_GET['title'];
 ?>
 
 <!DOCTYPE html>
@@ -39,29 +37,18 @@
             <li><a href="#">后台账号管理</a></li>
         </ul>
 
-        <form action="../../api/adv/updatelittle.php" method="post" enctype="multipart/form-data">
+        <form action="../../api/adv/updateword.php" method="post" enctype="multipart/form-data">
         <div class="right">
             <p class="title">修改广告</p>
             <div class="details">
                 <p class="title2">广告位置<span>*</span>：
-                    <input type="text" value="<?php echo $row['option']; ?>"  onfocus="this.blur()" name="option">
+                    <input type="text" value="<?php echo $option; ?>"  onfocus="this.blur()" name="option">
                 </p>
-                <p>
-                    广告原图：&nbsp;&nbsp;<img src="../../../public/uploads/<?php echo $row['img']; ?>" alt="" style="vertical-align:middle;width:100px;">
-                </p>
-                <p>
-                    广告图片&nbsp;&nbsp;：<input type="text" id="change_t1" class="pic" placeholder="请选择图片" onfocus="this.blur()">
-                    <input type="text" value="选择图片" class="sure" onfocus="this.blur()" onclick="document.getElementById('change_a1').click();">
-                    <input type="file" id="change_a1" class="file" onchange="document.getElementById('change_t1').value=this.value;" name="img">
-                </p>
-                <p class="text">提示：若不修改图片，则该项为空</p>
-                <p class="title2">&nbsp;&nbsp;&nbsp;&nbsp;URL&nbsp;&nbsp;&nbsp;&nbsp;<span>*</span>：<input type="text" value="<?php echo $row['url']; ?>" name="url"></p>
                 <p class="title2">广告描述<span>*</span>：
-                    <input type="text" value="<?php echo $row['content']; ?>"  name="content">
+                    <input type="text" value="<?php echo $title; ?>"  name="title">
                 </p>
                 <a href="../../adv.php"class="del">取消</a>
-                <input type="hidden" name="id" value="<?php echo $row['id']; ?>" style="display:none;">
-                <input type="hidden" name="imgsrc" value="<?php echo $row['img']; ?>" style="display:none;">
+                <input type="hidden" name="id" value="<?php echo $id; ?>" style="display:none;">
                 <input type="submit" value="确 认" class="ok" onfocus="this.blur();">
                 </p>
             </div>

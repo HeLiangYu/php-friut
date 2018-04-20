@@ -51,25 +51,6 @@
             </ul>
 
             <div class="right">
-                <div class="query">
-                    <span class="shop">商品名称：</span><input type="text">
-                    <span>商品类别：</span><input type="text">
-                    <span>标签：</span><input type="text">
-                    <span>商品状态：</span>
-                    <select>
-                        <option>全部</option>
-                        <option>启用</option>
-                        <option>禁用</option>
-                    </select>
-                    <span>首页显示：</span>
-                    <select>
-                        <option>全部</option>
-                        <option>是</option>
-                        <option>否</option>
-                    </select>
-                    <input type="text" value="查 询" class="submit" onfocus="this.blur()">
-                </div>
-
                 <p class="add"><input type="text" value="新增商品"  onfocus="this.blur()" class="add_newAdv"></p>
 
                 <table class="details">
@@ -112,15 +93,6 @@
                     </tr>
                     <?php } ?>
                 </table>
-
-                <div class="page">
-                    <p class="left">共2条</p>
-                    <p class="right">
-                        <input type="text" value="<上一条" onfocus="this.blur()">
-                        <span>1/2</span>
-                        <input type="text" value="下一条>" onfocus="this.blur()">
-                    </p>
-                </div>
             </div>
         </div>
     </div>

@@ -8,6 +8,9 @@
     $littlesql = "select * from littleadvert";
     $littlerst = mysql_query($littlesql);
 
+    $wenzisql = "select * from wenzi";
+    $wenzirst = mysql_query($wenzisql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +23,11 @@
     <link href="css/public.css" type="text/css" rel="stylesheet" />
     <link href="css/adv.css" type="text/css" rel="stylesheet" />
 
+
     <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="js/resizeImage.js" type="text/javascript"></script>
     <script src="js/tableColor.js"></script>
+    
 </head>
 
 <body>
@@ -47,8 +52,8 @@
             </ul>
 
             <div class="right">
-                <p class="ptitle">大广告</p>
-                <table class="details" style="margin-top:0;margin-bottom:25px;">
+                <p class="ptitle" id="big" style="cursor:pointer;">大广告</p>
+                <table class="details" style="margin-top:0;margin-bottom:25px;" id="table1">
                     <tr>
                         <th class="name">广告位置</th>
                         <th class="class">广告图片</th>
@@ -74,8 +79,27 @@
                      <?php } ?>
                 </table>
 
-                <p class="ptitle">小广告</p>
-                <table class="details" style="margin-top:0;">
+                <p class="ptitle" id="word" style="cursor:pointer;margin-top:25px;">广告文字信息管理</p>
+                <table class="details" style="margin-top:0;display:none;" id="table2">
+                    <tr>
+                        <th class="name">文字位置</th>
+                        <th class="class">文字内容</th>
+                        <th class="opret">操作</th>
+                    </tr>
+
+                     <?php while($wenzirow=mysql_fetch_assoc($wenzirst)){ ?>
+                    <tr>
+                        <td class="name"><span><?php echo $wenzirow['option']; ?></span></td>
+                        <td class="class"><?php echo $wenzirow['title']; ?></td>
+                        <td class="opret">
+                            <a href="./page/adv/updateword.php?id=<?php echo $wenzirow['id']; ?>&title=<?php echo $wenzirow['title']; ?>&option=<?php echo $wenzirow['option']; ?>">修改</a>
+                        </td>
+                    </tr>
+                     <?php } ?>
+                </table>
+
+                <p class="ptitle" style="margin-top:25px;cursor:pointer;" id="little">小广告</p>
+                <table class="details" style="margin-top:0;display:none;" id="table3">
                     <tr>
                         <th class="name">广告位置</th>
                         <th class="class">广告图片</th>
@@ -103,3 +127,29 @@
     </div>
 </body>
 </html>
+<script>
+    $('#big').click(function(){
+        var display1 = $("#table1").css('display');
+        if( display1 == 'none'){
+            $('#table1').show();
+        }else{
+            $('#table1').hide();
+        }
+    });
+    $('#word').click(function(){
+        var display2 = $("#table2").css('display');
+        if( display2 == 'none'){
+            $('#table2').show();
+        }else{
+            $('#table2').hide();
+        }
+    });
+    $('#little').click(function(){
+        var display3 = $("#table3").css('display');
+        if( display3 == 'none'){
+            $('#table3').show();
+        }else{
+            $('#table3').hide();
+        }
+    });
+</script>
