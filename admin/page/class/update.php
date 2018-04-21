@@ -1,5 +1,6 @@
 <?php 
   include '../../../public/common/config.php';
+  include '../../../public/common/adminsession.php';
 
   $id=$_GET['id'];
   $name = $_GET['name'];
@@ -17,7 +18,7 @@
 <body>
   <div class="mask" style="display:block;">
         <form action="../../api/class/update.php" method="post" >
-        <div class="recharge public_two"  style="display:block;margin-top:20%;">
+        <div class="recharge public_two"  style="display:block;margin-top:10%;">
           <p class="revamp_title">修改类别信息</p>
             <p>
                 &nbsp;&nbsp;类别ID&nbsp;：

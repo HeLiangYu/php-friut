@@ -1,11 +1,11 @@
 <?php 
   include '../../../public/common/config.php';
+  include '../../../public/common/adminsession.php';
 
   $id=$_GET['id'];
   $sql = "select * from shop where id='{$id}'";
   $rst = mysql_query($sql); 
   $row=mysql_fetch_assoc($rst);
-  print_r($row);
 //   $name = $_GET['name'];
 //   $classname = $_GET['classname'];
 //   $brandname = $_GET['brandname'];

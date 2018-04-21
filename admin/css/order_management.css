@@ -39,7 +39,7 @@
 .content .con_con .right .details{
     border-collapse: collapse;
     border: 1px solid #deddde;
-    margin-top: 10px;
+    margin-top: 0;
     background-color: #fff;
 }
 .content .con_con .right .details .title{

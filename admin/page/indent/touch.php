@@ -1,6 +1,7 @@
 <?php
     date_default_timezone_set("Asia/Shanghai");
     include '../../../public/common/config.php';
+    include '../../../public/common/adminsession.php';
 
     $code = $_GET['code'];
     $sql = "select * from indent where code='{$code}' group by code";
@@ -64,8 +65,8 @@
 <body>
     <div class="header">
         <div class="header_size">
-            <p class="header_title">水果到家后台管理系统 </p>
-            <span class="header_exit">您好，admin&nbsp;&nbsp;&nbsp; <a href="#">退出</a></span>
+            <p class="header_title">鲜果集后台管理系统 </p>
+            <span class="header_exit">您好，<?php echo $_SESSION['admin_username']; ?>&nbsp;&nbsp;&nbsp; <a href="../../api/logout.php" onclick="return confirm('确认退出系统吗？');">退出</a></span>
         </div>
     </div>
 
@@ -144,7 +145,7 @@
                 </select>
             </p>
             <p class="sure">
-                <a href="../../indent_m.php">取消</a>
+                <a href="../../indent_m.php" class="del">取消</a>
                 <input type="hidden" name="code" value="<?php echo $row['code']; ?>" style="display:none;">
                 <input type="submit" value="确定" class="ok" onfocus="this.blur();">
             </p>

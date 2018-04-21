@@ -188,7 +188,7 @@ html {
 
 .content .con_con .right .add {
     text-align: left;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 .content .con_con .right .add input {
@@ -343,6 +343,11 @@ th {
 .add_newAccount {
     font-family: 微软雅黑;
 }
+select {
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+}
 
 
 /*-----------弹窗-------------*/
@@ -371,6 +376,8 @@ th {
     margin-top: 10px;
     margin-bottom: 0;
     font-family: 微软雅黑;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .mask .del:hover {

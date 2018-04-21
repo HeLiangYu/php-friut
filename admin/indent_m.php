@@ -1,7 +1,8 @@
 <?php
     date_default_timezone_set("Asia/Shanghai");
     include '../public/common/config.php';
-
+    include '../public/common/adminsession.php';
+    
     $sql = "select indent.*, users.username uname, status.name sname, touch.name tname from indent, users, status, touch where indent.user_id=users.id and indent.status_id=status.id and indent.touch_id=touch.id group by indent.code";
     
     $rst = mysql_query($sql); 
@@ -30,8 +31,8 @@
 <body>
     <div class="header">
         <div class="header_size">
-            <p class="header_title">水果到家后台管理系统 </p>
-            <span class="header_exit">您好，admin&nbsp;&nbsp;&nbsp; <a href="#">退出</a></span>
+            <p class="header_title">鲜果集后台管理系统 </p>
+            <span class="header_exit">您好，<?php echo $_SESSION['admin_username']; ?>&nbsp;&nbsp;&nbsp; <a href="./api/logout.php" onclick="return confirm('确认退出系统吗？');">退出</a></span>
         </div>
     </div>
 
@@ -46,11 +47,11 @@
                 <li><a href="class.php">分类管理</a></li>
                 <li><a href="comment.php">评论管理</a></li>
                 <li><a href="business.php">用户账号管理</a></li>
-                <li><a href="#">后台账号管理</a></li>
+                <li><a href="admin.php">后台账号管理</a></li>
             </ul>
 
             <div class="right">
-                <table class="details">
+                <table class="details" style="margin-top:0;">
                     <tr>
                         <th class="time">订单号</th>
                         <th class="shops">用户账号</th>

@@ -1,5 +1,6 @@
 <?php
     include '../public/common/config.php';
+    include '../public/common/adminsession.php';
 
     $sql = "select shop.*, brand.name bname, class.name cname from shop, brand, class where brand.class_id=class.id and shop.brand_id=brand.id";
     
@@ -33,7 +34,7 @@
     <div class="header">
         <div class="header_size">
             <p class="header_title">鲜果集后台管理系统 </p>
-            <span class="header_exit">您好，admin&nbsp;&nbsp;&nbsp; <a href="#">退出</a></span>
+            <span class="header_exit">您好，<?php echo $_SESSION['admin_username']; ?>&nbsp;&nbsp;&nbsp; <a href="./api/logout.php" onclick="return confirm('确认退出系统吗？');">退出</a></span>
         </div>
     </div>
 
@@ -47,11 +48,11 @@
                 <li><a href="class.php">分类管理</a></li>
                 <li><a href="comment.php">评论管理</a></li>
                 <li><a href="business.php">用户账号管理</a></li>
-                <li><a href="#">后台账号管理</a></li>
+                <li><a href="admin.php">后台账号管理</a></li>
             </ul>
 
             <div class="right">
-                <p class="add"><input type="text" value="新增商品"  onfocus="this.blur()" class="add_newAdv"></p>
+                <p class="add" style="margin-top:0;"><input type="text" value="新增商品"  onfocus="this.blur()" class="add_newAdv"></p>
 
                 <table class="details">
                     <tr>

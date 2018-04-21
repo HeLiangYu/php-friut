@@ -16,14 +16,15 @@
 </head>
 <body>
   <div class="mask" style="display:block;">
-        <form action="../../api/user/delete.php" method="post" >
+        <form action="../../api/admin/reset.php" method="post" >
         <div class="recharge public_two"  style="display:block;margin-top:20%;">
-            <p class="out_header">删除用户</p>
-            <p class="name">确定要删除用户<span>【<?php echo $username; ?>】</span>吗？</p>
-            <p class="sure">
-                <a href="../../business.php" class="del" type="reset">取消</a>
-                <input type="text" name="id" value="<?php echo $id; ?>" style="display:none;">
-                <button class="ok" type="submit">确认</button>
+          <p class="out_header">重置管理员密码</p>
+          <p class="name">确定要重置管理员<span>【<?php echo $username; ?>】</span>密码吗？重置后的密码是123456</p>
+          <p class="sure">
+            <a href="../../admin.php" class="del" type="reset">取消</a>
+            <input type="text" name="id" value="<?php echo $id; ?>" style="display:none;">
+            <button class="ok" type="submit">确认</button>
+          </p>
         </div>
         </form>
     </div>

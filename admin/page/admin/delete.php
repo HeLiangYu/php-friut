@@ -3,8 +3,7 @@
   include '../../../public/common/adminsession.php';
 
   $id=$_GET['id'];
-  $name = $_GET['name'];
-  $classname = $_GET['classname'];
+  $username = $_GET['username'];
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +16,12 @@
 </head>
 <body>
   <div class="mask" style="display:block;">
-        <form action="../../api/class/delete.php" method="post" >
+        <form action="../../api/admin/delete.php" method="post" >
         <div class="recharge public_two"  style="display:block;margin-top:20%;">
-            <p class="out_header">删除类别</p>
-            <p class="name">确定要删除类别<span>【<?php echo $classname; ?>】</span><span>【<?php echo $name; ?>】</span>吗？</p>
+            <p class="out_header">删除管理员</p>
+            <p class="name">确定要删除管理员<span>【<?php echo $username; ?>】</span>吗？</p>
             <p class="sure">
-                <a href="../../class.php" class="del" type="reset">取消</a>
+                <a href="../../admin.php" class="del" type="reset">取消</a>
                 <input type="text" name="id" value="<?php echo $id; ?>" style="display:none;">
                 <button class="ok" type="submit">确认</button>
         </div>

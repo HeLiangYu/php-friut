@@ -4,8 +4,10 @@
 
   $username = $_POST['name'];
   $password =$_POST['password'];
+  // print_r($_POST);
+  // exit;
 
-  $sql = "insert into users(username, password) values('{$username}', '{$password}')";
+  $sql = "insert into users(username, password) values('{$username}', MD5('{$password}'))";
 
   if(mysql_query($sql)){
     echo '<script>location="../../business.php"</script>';
