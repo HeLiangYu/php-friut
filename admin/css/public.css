@@ -347,6 +347,7 @@ select {
     width: 80px;
     height: 40px;
     line-height: 40px;
+    font-size: 15px;
 }
 
 
@@ -484,4 +485,17 @@ select {
     width: 0;
     height: 0;
     overflow: hidden;
+}
+
+.page{
+    width:100%;
+    padding: 10px;
+}
+.page a{
+    margin: 5px;
+    color: rgb(254, 159, 33);
+    text-decoration: none;
+}
+.page a:hover{
+    color: #148df1;
 }

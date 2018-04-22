@@ -1,10 +1,22 @@
 <?php
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     $sql = "select shop.*, brand.name bname, class.name cname from shop, brand, class where brand.class_id=class.id and shop.brand_id=brand.id";
-    
+    $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
     $rst = mysql_query($sql); 
+    $page = new Page('',$sql,$current_page,7,"?page=");
+    $pagerows = $page->list;
+    // print_r($pagerows);
+    // foreach($pagerows as $pagerow)
+    // {
+    // echo $pagerow['name']."<br>";
+    // }
+    
+    // echo $page->page;
+    // echo  $page->pageCount;
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +79,9 @@
                         <th class="opret">操作</th>
                     </tr>
 
-                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                    <?php //while($row=mysql_fetch_assoc($rst)){ 
+                         foreach($pagerows as $row){    
+                    ?>
                     <tr>
                         <td class="name"><span><?php echo $row['id']; ?></span></td>
                         <td class="iforma"><span><?php echo $row['name']; ?></span></td>
@@ -94,6 +108,7 @@
                     </tr>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

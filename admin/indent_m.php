@@ -2,8 +2,13 @@
     date_default_timezone_set("Asia/Shanghai");
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
     
     $sql = "select indent.*, users.username uname, status.name sname, touch.name tname from indent, users, status, touch where indent.user_id=users.id and indent.status_id=status.id and indent.touch_id=touch.id group by indent.code";
+
+    $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+    $page = new Page('',$sql,$current_page,7,"?page=");
+    $pagerows = $page->list;
     
     $rst = mysql_query($sql); 
 ?>
@@ -61,7 +66,9 @@
                         <th class="operation">操作</th>
                     </tr>
 
-                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                    <?php //while($rows=mysql_fetch_assoc($rst)){ 
+                         foreach($pagerows as $row){        
+                    ?>
                     <tr>
                         <td class="time"><?php echo $row['code']; ?></td>
                         <td class="shops"><?php echo $row['uname']; ?></td>
@@ -74,6 +81,7 @@
                     </tr>
                     <?php } ?>                    
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

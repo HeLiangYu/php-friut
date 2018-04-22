@@ -1,13 +1,16 @@
 <?php
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     // $sql = "select * from users limit $offset, $length";
     $sql = "select * from status";
+
+    $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+    $page = new Page('',$sql,$current_page,7,"?page=");
+    $pagerows = $page->list;
     
     $rst = mysql_query($sql);
-
-    
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +72,9 @@
                         <th class="number">操作</th>
                     </tr>
 
-                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                    <?php //while($row=mysql_fetch_assoc($rst)){ 
+                        foreach($pagerows as $row){        
+                    ?>
                         <tr>
                             <td class="classification"><span><?php echo $row['id']; ?></span></td>
                             <td class="name"><span><?php echo $row['name']; ?></span></td>
@@ -79,6 +84,7 @@
                         </tr>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

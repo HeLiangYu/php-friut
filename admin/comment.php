@@ -2,8 +2,12 @@
     date_default_timezone_set("Asia/Shanghai");
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     $sql = "select comment.*, shop.name sname, users.username uname from comment, shop, users where comment.user_id=users.id and comment.shop_id=shop.id";
+    $page = new Page('',$sql,$current_page,12,"?page=");
+    $pagerows = $page->list;
+
     $rst = mysql_query($sql); 
 ?>
 
@@ -52,7 +56,9 @@
                         <th class="name">操作</th>
                     </tr>
                     
-                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                    <?php //while($row=mysql_fetch_assoc($rst)){ 
+                        foreach($pagerows as $row){     
+                    ?>
                     <tr>
                         <td class="name"><span><?php echo $row['id']; ?></span></td>
                         <td class="name"><?php echo $row['uname']; ?></td>
@@ -65,6 +71,7 @@
                     </tr>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

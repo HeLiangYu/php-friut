@@ -50,7 +50,7 @@
                 </select>
             </p>
             <p class="sure">
-                <a href="../../class.php" >取消</a>
+                <a href="../../class.php" class="del">取消</a>
                 <button class="ok" type="submit">确认</button>
         </div>
         </form>

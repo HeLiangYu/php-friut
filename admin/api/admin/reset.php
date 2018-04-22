@@ -1,5 +1,6 @@
 <?php
    include '../../../public/common/config.php';
+   include '../../../public/common/adminsession.php';
 
   $id=$_POST['id'];
   $password = md5(123456);

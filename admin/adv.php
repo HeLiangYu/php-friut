@@ -53,7 +53,7 @@
             </ul>
 
             <div class="right">
-                <p class="ptitle" id="big" style="cursor:pointer;">大广告</p>
+                <p class="ptitle" id="big" style="cursor:pointer;">&nbsp;&nbsp;&nbsp;&nbsp;大广告</p>
                 <table class="details" style="margin-top:0;margin-bottom:25px;" id="table1">
                     <tr>
                         <th class="name">广告位置</th>
@@ -80,26 +80,7 @@
                      <?php } ?>
                 </table>
 
-                <p class="ptitle" id="word" style="cursor:pointer;margin-top:25px;">广告文字信息管理</p>
-                <table class="details" style="margin-top:0;display:none;" id="table2">
-                    <tr>
-                        <th class="name">文字位置</th>
-                        <th class="class">文字内容</th>
-                        <th class="opret">操作</th>
-                    </tr>
-
-                     <?php while($wenzirow=mysql_fetch_assoc($wenzirst)){ ?>
-                    <tr>
-                        <td class="name"><span><?php echo $wenzirow['option']; ?></span></td>
-                        <td class="class"><?php echo $wenzirow['title']; ?></td>
-                        <td class="opret">
-                            <a href="./page/adv/updateword.php?id=<?php echo $wenzirow['id']; ?>&title=<?php echo $wenzirow['title']; ?>&option=<?php echo $wenzirow['option']; ?>">修改</a>
-                        </td>
-                    </tr>
-                     <?php } ?>
-                </table>
-
-                <p class="ptitle" style="margin-top:25px;cursor:pointer;" id="little">小广告</p>
+                <p class="ptitle" style="margin-top:25px;cursor:pointer;" id="little">&nbsp;&nbsp;&nbsp;&nbsp;小广告</p>
                 <table class="details" style="margin-top:0;display:none;" id="table3">
                     <tr>
                         <th class="name">广告位置</th>

@@ -44,24 +44,24 @@
         <div class="right">
             <p class="title">修改广告</p>
             <div class="details">
-                <p class="title2">广告位置<span>*</span>：
+                <p class="title2" style="margin-left: 10px;">广告位置<span>*</span>：
                     <input type="text" value="<?php echo $row['title']; ?>"  onfocus="this.blur()" name="title">
                 </p>
-                <p>
+                <p style="margin-left: 10px;">
                     广告原图：&nbsp;&nbsp;<img src="../../../public/uploads/<?php echo $row['img']; ?>" alt="" style="vertical-align:middle;width:100px;">
                 </p>
-                <p>
+                <p style="margin-left: 10px;">
                     广告图片&nbsp;&nbsp;：<input type="text" id="change_t1" class="pic" placeholder="请选择图片" onfocus="this.blur()">
                     <input type="text" value="选择图片" class="sure" onfocus="this.blur()" onclick="document.getElementById('change_a1').click();">
                     <input type="file" id="change_a1" class="file" onchange="document.getElementById('change_t1').value=this.value;" name="img">
                 </p>
-                <p class="text">提示：若不修改图片，则该项为空</p>
-                <p class="title2">&nbsp;&nbsp;&nbsp;&nbsp;URL&nbsp;&nbsp;&nbsp;&nbsp;<span>*</span>：<input type="text" value="<?php echo $row['url']; ?>" name="url"></p>
+                <p class="text" style="margin-left: 10px;">提示：若不修改图片，则该项为空</p>
+                <p class="title2" style="margin-left: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;URL&nbsp;&nbsp;&nbsp;&nbsp;<span>*</span>：<input type="text" value="<?php echo $row['url']; ?>" name="url"></p>
                 <?php 
                     $classql = "select * from class";
                     $classrst = mysql_query($classql); 
                  ?>
-                <p>
+                <p style="margin-left: 10px;">
                     商品类别<span>*</span>：
                     <select name="brand_id">
                         <?php while($classrow=mysql_fetch_assoc($classrst)){ ?>
@@ -88,7 +88,7 @@
                         <?php } ?>
                     </select>
                 </p>
-                <a href="../../adv.php"class="del">取消</a>
+                <a href="../../adv.php" class="del">取消</a>
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>" style="display:none;">
                 <input type="hidden" name="imgsrc" value="<?php echo $row['img']; ?>" style="display:none;">
                 <input type="submit" value="确 认" class="ok" onfocus="this.blur();">

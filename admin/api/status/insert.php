@@ -1,5 +1,6 @@
 <?php
   include '../../../public/common/config.php';
+  include '../../../public/common/adminsession.php';
 
   $name = $_POST['name'];
 

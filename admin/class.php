@@ -1,8 +1,13 @@
 <?php
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     $sql = "select brand.*, class.name cname from brand, class where brand.class_id=class.id";
+
+    $current_page   = empty($_GET['page']) ? 1 : $_GET['page'];
+    $page = new Page('',$sql,$current_page,12,"?page=");
+    $pagerows = $page->list;
     
     $rst = mysql_query($sql); 
 ?>
@@ -52,7 +57,7 @@
             </ul>
 
             <div class="right">
-                <p class="add"><input type="text" value="新增类别"  onfocus="this.blur()" class="add_newAdv"></p>
+                <p class="add" style="margin-top:0;"><input type="text" value="新增类别"  onfocus="this.blur()" class="add_newAdv"></p>
 
                 <table class="details">
                     <tr>
@@ -62,7 +67,9 @@
                         <th class="opret">操作</th>
                     </tr>
                     
-                    <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                    <?php //while($row=mysql_fetch_assoc($rst)){
+                        foreach($pagerows as $row){    
+                    ?>
                     <tr>
                         <td class="name"><span><?php echo $row['id']; ?></span></td>
                         <td class="name"><?php echo $row['cname']; ?></td>
@@ -74,6 +81,7 @@
                     </tr>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

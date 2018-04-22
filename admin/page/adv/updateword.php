@@ -48,7 +48,7 @@
                 <p class="title2">广告描述<span>*</span>：
                     <input type="text" value="<?php echo $title; ?>"  name="title">
                 </p>
-                <a href="../../adv.php"class="del">取消</a>
+                <a href="../../adv.php" class="del">取消</a>
                 <input type="hidden" name="id" value="<?php echo $id; ?>" style="display:none;">
                 <input type="submit" value="确 认" class="ok" onfocus="this.blur();">
                 </p>

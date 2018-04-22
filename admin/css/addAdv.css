@@ -4,7 +4,7 @@
 
 .content .con_con .right .details{
     background-color: #fff;
-    padding: 10px;
+    padding: 10px 0;
     margin-top: 0;
     border: 0;
     margin-bottom: 50px;
@@ -54,7 +54,7 @@
     width: 905px;
     border: 1px solid #deddde;
 }
-.content .con_con .right .details .del{
+/* .content .con_con .right .details .del{
     width: 100px;
     height: 40px;
     line-height: 40px;
@@ -68,7 +68,7 @@
     margin-top: 10px;
     margin-bottom: 0;
     font-family: 微软雅黑;
-}
+} */
 .content .con_con .right .details .del:hover{
     background-color: #148df1;
 }

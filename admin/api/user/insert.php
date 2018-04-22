@@ -1,6 +1,7 @@
 <?php
   // 添加新用户
   include '../../../public/common/config.php';
+  include '../../../public/common/adminsession.php';
 
   $username = $_POST['name'];
   $password =$_POST['password'];

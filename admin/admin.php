@@ -1,9 +1,13 @@
 <?php
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     // $sql = "select * from users limit $offset, $length";
     $sql = "select * from admin";
+
+    $page = new Page('',$sql,$current_page,12,"?page=");
+    $pagerows = $page->list;
     
     $rst = mysql_query($sql);
 
@@ -66,7 +70,8 @@
                     </tr>
 
                         <?php 
-                            while($row=mysql_fetch_assoc($rst)){
+                            //while($row=mysql_fetch_assoc($rst)){
+                            foreach($pagerows as $row){     
                                 if($_SESSION['admin_adminid'] == '1'){ 
                         ?>
                             <tr>
@@ -111,6 +116,7 @@
                         <?php } ?>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>

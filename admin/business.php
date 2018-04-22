@@ -1,9 +1,13 @@
 <?php
     include '../public/common/config.php';
     include '../public/common/adminsession.php';
+    include '../public/common/page.php';
 
     // $sql = "select * from users limit $offset, $length";
     $sql = "select * from users";
+
+    $page = new Page('',$sql,$current_page,12,"?page=");
+    $pagerows = $page->list;
     
     $rst = mysql_query($sql);
 
@@ -62,7 +66,9 @@
                         <th class="opret">操作</th>
                     </tr>
 
-                        <?php while($row=mysql_fetch_assoc($rst)){ ?>
+                        <?php //while($row=mysql_fetch_assoc($rst)){ 
+                            foreach($pagerows as $row){         
+                        ?>
                     <tr>
                         <td class="name"><p><?php echo $row['username']; ?></p></td>
                         <td class="class"><p><?php echo $row['username']; ?></p></td>
@@ -77,6 +83,7 @@
                     </tr>
                     <?php } ?>
                 </table>
+                <p class="page"><?php echo $page->getPageList(); ?></p>
             </div>
         </div>
     </div>
