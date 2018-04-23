@@ -18,6 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
+<link rel="shortcut icon" href="./images/logo.ico">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' type='text/css'>
@@ -69,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="logo-nav">
 				<div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-					<h1><a href="index.html"><img src="./images/logo.png" alt=""></a></h1>
+					<h1><a href="index.php"><img src="./images/logo.png" alt=""></a></h1>
 				</div>
 				<div class="logo-nav-left1">
 					<nav class="navbar navbar-default">
@@ -84,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div> 
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html" class="act">首页</a></li>	
+							<li class="active"><a href="index.php" class="act">首页</a></li>	
 							<!-- Mega Menu -->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">进口水果 <b class="caret"></b></a>
@@ -242,12 +243,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-3 new-collections-grid">
 					<div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
 						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img style="height:231px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img']; ?>" alt=" " class="img-responsive" /></a>
+							<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>" class="product-image"><img style="height:231px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img']; ?>" alt=" " class="img-responsive" /></a>
 							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">详情</a>
+								<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">详情</a>
 							</div>
 						</div>
-						<h4><a href="single.html"><?php echo $shopnewarr[$i]['name'];?></a></h4>
+						<h4><a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><?php echo $shopnewarr[$i]['name'];?></a></h4>
 						<p><?php echo $shopnewarr[$i]['cname'];?></p>
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
 							<p><span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="#">添加到购物车</a></p>
@@ -284,44 +285,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3>快速入口</h3>
 					<?php for($i=0; $i<sizeof($shopnnewarr); $i++){ ?>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="../public/uploads/<?php echo $shopnnewarr[$i]['img']; ?>" alt=" " class="img-responsive" style="width:100px;height:80px;" /></a>
+						<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><img src="../public/uploads/<?php echo $shopnnewarr[$i]['img']; ?>" alt=" " class="img-responsive" style="width:100px;height:80px;" /></a>
 					</div>
 					<?php }?>
 					<div class="clearfix"> </div>
 				</div>
-				<!-- <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-					<h3>Blog Posts</h3>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">culpa qui officia deserunt</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">Quis autem vel eum iure</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				
-				
-				
-				
-				
-				
-				</div> -->
 				<div class="clearfix"> </div>
 			</div>
 			<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-				<h2><a href="index.html"><img src="./images/"></a></h2>
+				<h2><a href="index.php"><img src="./images/logo57.gif"></a></h2>
 			</div>
 		</div>
 	</div>

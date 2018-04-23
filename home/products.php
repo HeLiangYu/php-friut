@@ -87,44 +87,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="icon-bar"></span>
 						</button>
 					</div>
-					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php">Home</a></li>	
+							<li class="active"><a href="index.php" class="act">首页</a></li>	
 							<!-- Mega Menu -->
-							 <li class="dropdown active">
-								<a href="#" class="dropdown-toggle act" data-toggle="dropdown">Products <b class="caret"></b></a>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">进口水果 <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="">
 											<ul class="multi-column-dropdown">
-												<h6>Men's Wear</h6>
-												<li><a href="products.html">Clothing</a></li>
-												<li><a href="products.html">Wallets</a></li>
-												<li><a href="products.html">Shoes</a></li>
-												<li><a href="products.html">Watches</a></li>
-												<li><a href="products.html">Accessories</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Women's Wear</h6>
-												<li><a href="products.html">Clothing</a></li>
-												<li><a href="products.html">Wallets,Bags</a></li>
-												<li><a href="products.html">Footwear</a></li>
-												<li><a href="products.html">Watches</a></li>
-												<li><a href="products.html">Accessories</a></li>
-												<li><a href="products.html">Jewellery</a></li>
-												<li><a href="products.html">Beauty & Grooming</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Kid's Wear</h6>
-												<li><a href="products.html">Kids Home Fashion</a></li>
-												<li><a href="products.html">Boy's Clothing</a></li>
-												<li><a href="products.html">Girl's Clothing</a></li>
-												<li><a href="products.html">Shoes</a></li>
-												<li><a href="products.html">Brand Stores</a></li>
+												<h6>进口水果</h6>
+												<?php foreach($jbrandarr as $jitem){ ?>
+													<li><a href="products.php?brand_id=<?php echo $jitem['id'] ;?>&class_id=<?php echo $jitem['class_id']; ?>"><?php echo $jitem['name'] ;?></a></li>
+												<?php } ?>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
@@ -132,45 +108,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">国产水果 <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
-										<div class="col-sm-4">
+										<div>
 											<ul class="multi-column-dropdown">
-												<h6>Home Collection</h6>
-												<li><a href="furniture.html">Cookware</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Dining Tables</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Home Decor</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Office Collection</h6>
-												<li><a href="furniture.html">Carpets</a></li>
-												<li><a href="furniture.html">Tables</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Sockets</a></li>
-												<li><a href="furniture.html">Electrical Machines</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Decorations</h6>
-												<li><a href="furniture.html">Toys</a></li>
-												<li><a href="furniture.html">Wall Clock</a></li>
-												<li><a href="furniture.html">Lighting</a></li>
-												<li><a href="furniture.html">Top Brands</a></li>
+												<h6>国产水果</h6>
+												<?php foreach($gbrandarr as $gitem){ ?>
+													<li><a href="products.php?brand_id=<?php echo $gitem['id'] ;?>&class_id=<?php echo $gitem['class_id']; ?>"><?php echo $gitem['name'] ;?></a></li>
+												<?php } ?>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
 									</div>
 								</ul>
 							</li>
-							<li><a href="short-codes.html">Short Codes</a></li>
-							<li><a href="mail.html">Mail Us</a></li>
+							<li><a href="mail.html">意见反馈</a></li>
 						</ul>
 					</div>
 					</nav>
@@ -245,10 +198,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php for($i=0; $i<sizeof($shopnewarr); $i++){ ?>
 						<div class="new-products-grid" style="margin-bottom: 3em;">
 							<div class="new-products-grid-left">
-								<a href="single.html"><img style="height:120px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img'];?>" alt=" " class="img-responsive" /></a>
+								<a href="single.php"><img style="height:120px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img'];?>" alt=" " class="img-responsive" /></a>
 							</div>
 							<div class="new-products-grid-right">
-								<h4><a href="single.html"><?php echo $shopnewarr[$i]['name'];?></a></h4>
+								<h4><a href="single.php"><?php echo $shopnewarr[$i]['name'];?></a></h4>
 								<div class="simpleCart_shelfItem new-products-grid-right-add-cart">
 									<p> <span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="#">添加到购物车</a></p>
 								</div>
@@ -259,7 +212,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="men-position animated wow slideInUp" data-wow-delay=".5s">
-					<a href="single.html"><img src="../public/uploads/<?php echo $littleadvarr[1]['img'];?>" alt=" " class="img-responsive" /></a>
+					<a href="single.php"><img src="../public/uploads/<?php echo $littleadvarr[1]['img'];?>" alt=" " class="img-responsive" /></a>
 					<div class="men-position-pos">
 						<h5><span>55%</span> Flat Discount</h5>
 					</div>
@@ -275,12 +228,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-6 products-right-grids-bottom-grid" style="margin-top:10px;">
 						<div class="new-collections-grid1 products-right-grid1 animated wow slideInUp" data-wow-delay=".5s">
 							<div class="new-collections-grid1-image">
-								<a href="single.html" class="product-image"><img   style="height:231px;"src="../public/uploads/<?php echo $tsitem['img']; ?>" alt=" " class="img-responsive"></a>
+								<a href="single.php" class="product-image"><img   style="height:231px;"src="../public/uploads/<?php echo $tsitem['img']; ?>" alt=" " class="img-responsive"></a>
 								<div class="new-collections-grid1-image-pos products-right-grids-pos" style="text-align:center;">
-									<a href="single.html">详情</a>
+									<a href="single.php">详情</a>
 								</div>
 							</div>
-							<h4><a href="single.html"><?php echo $tsitem['name']; ?></a></h4>
+							<h4><a href="single.php"><?php echo $tsitem['name']; ?></a></h4>
 							<div class="simpleCart_shelfItem products-right-grid1-add-cart">
 								<p><span class="item_price">￥<?php echo $tsitem['price']; ?></span><a class="item_add" href="#">添加到购物车 </a></p>
 							</div>
@@ -314,40 +267,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
 					<h3>Flickr Posts</h3>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -355,20 +308,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3>Blog Posts</h3>
 					<div class="footer-grid-sub-grids">
 						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
+							<a href="single.php"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
 						</div>
 						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">culpa qui officia deserunt</a></h4>
+							<h4><a href="single.php">culpa qui officia deserunt</a></h4>
 							<p>Posted On 25/3/2016</p>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 					<div class="footer-grid-sub-grids">
 						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
+							<a href="single.php"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
 						</div>
 						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">Quis autem vel eum iure</a></h4>
+							<h4><a href="single.php">Quis autem vel eum iure</a></h4>
 							<p>Posted On 25/3/2016</p>
 						</div>
 						<div class="clearfix"> </div>

@@ -1,3 +1,20 @@
+<?php
+	include '../public/common/config.php';
+
+	$shop_id = $_GET['shop_id'];
+
+	$singlesql = "select shop.*, brand.name bname, class.name cname from shop, class, brand where shop.id='{$shop_id}' and shop.brand_id=brand.id and  brand.class_id=class.id group by shop.id";
+	$singlerst = mysql_query($singlesql);
+
+	$singlerow = mysql_fetch_assoc($singlerst);
+	
+	// while(){
+	// 	$singlearr[] = $singlerow;
+	// }
+
+	print_r($singlerow);
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="logo-nav">
 				<div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-					<h1><a href="index.html">Best Store <span>Shop anywhere</span></a></h1>
+					<h1><a href="index.php">Best Store <span>Shop anywhere</span></a></h1>
 				</div>
 				<div class="logo-nav-left1">
 					<nav class="navbar navbar-default">
@@ -73,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>	
+							<li><a href="index.php">Home</a></li>	
 							<!-- Mega Menu -->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
@@ -198,7 +215,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 				<li class="active">Single Page</li>
 			</ol>
 		</div>
@@ -208,34 +225,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="single">
 		<div class="container">
 			<div class="col-md-4 products-left">
-				<div class="filter-price animated wow slideInUp" data-wow-delay=".5s">
-					<h3>Filter By Price</h3>
-					<ul class="dropdown-menu1">
-							<li><a href="">								               
-							<div id="slider-range"></div>							
-							<input type="text" id="amount" style="border: 0" />
-							</a></li>	
-					</ul>
-						<script type='text/javascript'>//<![CDATA[ 
-						$(window).load(function(){
-						 $( "#slider-range" ).slider({
-								range: true,
-								min: 0,
-								max: 100000,
-								values: [ 10000, 60000 ],
-								slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-								}
-					 });
-					$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
-						});//]]>
-						</script>
-						<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-					 <!---->
-				</div>
 				<div class="categories animated wow slideInUp" data-wow-delay=".5s">
-					<h3>Categories</h3>
+					<h3>目 录</h3>
 					<ul class="cate">
 						<li><a href="products.html">Best Selling</a> <span>(15)</span></li>
 						<li><a href="products.html">Home Collections</a> <span>(16)</span></li>
@@ -265,15 +256,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/si.jpg">
-								<div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="../public/uploads/thumb_<?php echo $singlerow['img'];?>">
+								<div class="thumb-image"> <img src="../public/uploads/thumb_<?php echo $singlerow['img'];?>" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="images/si1.jpg">
-								 <div class="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="images/si2.jpg">
-							   <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li> 
 						</ul>
 					</div>
 					<!-- flixslider -->
@@ -291,98 +276,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- flixslider -->
 				</div>
 				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
-					<h3>Men's Solid Casual Shirt</h3>
-					<h4><span class="item_price">$550</span> - $900</h4>
-					<div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked>
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div>
+					<h3><?php echo $singlerow['name'];?></h3>
+					<h4><span class="item_price">￥<?php echo $singlerow['price']; ?></h4>
 					<div class="description">
-						<h5><i>Description</i></h5>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-							eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-					</div>
-					<div class="color-quality">
-						<div class="color-quality-left">
-							<h5>Color : </h5>
-							<ul>
-								<li><a href="#"><span></span>Red</a></li>
-								<li><a href="#" class="brown"><span></span>Yellow</a></li>
-								<li><a href="#" class="purple"><span></span>Purple</a></li>
-								<li><a href="#" class="gray"><span></span>Violet</a></li>
-							</ul>
-						</div>
-						<div class="color-quality-right">
-							<h5>Quality :</h5>
-							<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">5 Qty</option>
-								<option value="null">6 Qty</option> 
-								<option value="null">7 Qty</option>					
-								<option value="null">10 Qty</option>								
-							</select>
-						</div>
-						<div class="clearfix"> </div>
+						<p>
+							<span><?php echo $singlerow['cname']; ?></span>
+							<span><?php echo $singlerow['bname']; ?></span>
+						</p>
 					</div>
 					<div class="occasional">
-						<h5>Occasion :</h5>
-						<div class="colr ert">
-							<label class="radio"><input type="radio" name="radio" checked=""><i></i>Casual Wear</label>
-						</div>
-						<div class="colr">
-							<label class="radio"><input type="radio" name="radio"><i></i>Party Wear</label>
-						</div>
-						<div class="colr">
-							<label class="radio"><input type="radio" name="radio"><i></i>Formal Wear</label>
-						</div>
-						<div class="clearfix"> </div>
+						<h5 style="display:inline-block;">商品库存 :</h5>
+						<span><?php echo $singlerow['stock'];?> kg</span>
 					</div>
 					<div class="occasion-cart">
-						<a class="item_add" href="#">add to cart </a>
-					</div>
-					<div class="social">
-						<div class="social-left">
-							<p>Share On :</p>
-						</div>
-						<div class="social-right">
-							<ul class="social-icons">
-								<li><a href="#" class="facebook"></a></li>
-								<li><a href="#" class="twitter"></a></li>
-								<li><a href="#" class="g"></a></li>
-								<li><a href="#" class="instagram"></a></li>
-							</ul>
-						</div>
-						<div class="clearfix"> </div>
+						<a class="item_add" href="#">添加到购物车 </a>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
 				<div class="bootstrap-tab animated wow slideInUp" data-wow-delay=".5s">
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
-							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews(2)</a></li>
-							<li role="presentation" class="dropdown">
-								<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Information <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-									<li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">cleanse</a></li>
-									<li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">fanny</a></li>
-								</ul>
-							</li>
+							<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">商品描述</a></li>
+							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">商品评论</a></li>
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
-								<h5>Product Brief Description</h5>
-								<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-									<span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+								<h5>商品描述详情</h5>
+								<p><?php echo $singlerow['content'];?></p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
 								<div class="bootstrap-tab-text-grids">
@@ -427,12 +347,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</form>
 									</div>
 								</div>
-							</div>
-							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown1" aria-labelledby="dropdown1-tab">
-								<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-							</div>
-							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown2" aria-labelledby="dropdown2-tab">
-								<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
 							</div>
 						</div>
 					</div>
@@ -680,7 +594,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-				<h2><a href="index.html">Best Store <span>shop anywhere</span></a></h2>
+				<h2><a href="index.php">Best Store <span>shop anywhere</span></a></h2>
 			</div>
 			<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
 				<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
