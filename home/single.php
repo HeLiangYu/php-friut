@@ -7,12 +7,14 @@
 	$singlerst = mysql_query($singlesql);
 
 	$singlerow = mysql_fetch_assoc($singlerst);
+
+	$commentsql = "select comment.*, users.username uname, users.img uimg from comment, users where comment.shop_id='{$shop_id}' and comment.user_id=users.id";
+	$commentrst = mysql_query($commentsql);
+	$commentrow = mysql_fetch_assoc($commentrst);
 	
 	// while(){
 	// 	$singlearr[] = $singlerow;
 	// }
-
-	print_r($singlerow);
  ?>
 
 <!DOCTYPE html>
@@ -305,46 +307,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<p><?php echo $singlerow['content'];?></p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
+								
 								<div class="bootstrap-tab-text-grids">
 									<div class="bootstrap-tab-text-grid">
 										<div class="bootstrap-tab-text-grid-left">
-											<img src="images/4.png" alt=" " class="img-responsive" />
+											<img src="../public/uploads/thumb_<?php echo $commentrow['uimg'];?>" style="border-radius:50%;border:1px solid #ddd;width:100px;height:100px;" alt=" " class="img-responsive" />
 										</div>
 										<div class="bootstrap-tab-text-grid-right">
 											<ul>
-												<li><a href="#">Admin</a></li>
-												<li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
+												<li><a href="#"><?php echo $commentrow['uname'];?></a></li>
 											</ul>
-											<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis 
-												suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem 
-												vel eum iure reprehenderit.</p>
+											<p><?php echo $commentrow['content']; ?></p>
+											<p><?php echo date("Y-m-d H:i", $commentrow['time']);?></p>
 										</div>
 										<div class="clearfix"> </div>
-									</div>
-									<div class="bootstrap-tab-text-grid">
-										<div class="bootstrap-tab-text-grid-left">
-											<img src="images/5.png" alt=" " class="img-responsive" />
-										</div>
-										<div class="bootstrap-tab-text-grid-right">
-											<ul>
-												<li><a href="#">Admin</a></li>
-												<li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
-											</ul>
-											<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis 
-												suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem 
-												vel eum iure reprehenderit.</p>
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-									<div class="add-review">
-										<h4>add a review</h4>
-										<form>
-											<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-											<input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-											<input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}" required="">
-											<textarea type="text"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-											<input type="submit" value="Send" >
-										</form>
 									</div>
 								</div>
 							</div>
