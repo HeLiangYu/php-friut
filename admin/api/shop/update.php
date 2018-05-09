@@ -11,6 +11,7 @@
   $brand_id = $_POST['brand_id'];
   $shelf = $_POST['shelf'];  
   $stock = $_POST['stock'];
+  $content = $_POST['content'];
   $imgsrc = $_POST['imgsrc'];
   
   $imagerror = $_FILES['img']['error'];
@@ -32,34 +33,12 @@
       
       $newname = basename($dst);
 
-      $sql = "update shop set name='{$name}', price='{$price}', brand_id='{$brand_id}', shelf='{$shelf}', stock='{$stock}', img='{$newname}' where id='{$id}'";
+      $sql = "update shop set name='{$name}', price='{$price}', brand_id='{$brand_id}', shelf='{$shelf}', stock='{$stock}', img='{$newname}', content='{$content}' where id='{$id}'";
 
     }
   }else{
-    $sql = "update shop set name='{$name}', price='{$price}', brand_id='{$brand_id}', shelf='{$shelf}', stock='{$stock}' where id='{$id}'";
+    $sql = "update shop set name='{$name}', price='{$price}', brand_id='{$brand_id}', shelf='{$shelf}', stock='{$stock}', content='{$content}' where id='{$id}'";
   }
-
-  if(mysql_query($sql)){
-    echo '<script>location="../../product.php"</script>';
-  }
-exit;
-  //图片上传
-  $src = $_FILES['img']['tmp_name'];
-  $imgname = $_FILES['img']['name'];
-  $ext = array_pop(explode('.', $imgname));
-  $dst = '../../../public/uploads/'.time().mt_rand().'.'.$ext;
-  // 等比例缩放图片
-  if(move_uploaded_file($src, $dst)){
-    $newname = basename($dst);
-    thumb($dst, 200, 200);
-  };
-
-  
-  
-  // $name = $_POST['name'];
-  // $class_id = $_POST['class_id'];
-
-  $sql = "insert into shop(name, img, price, stock, brand_id, shelf) values('{$name}','{$newname}', '{$price}', '{$stock}', '{$brand_id}', '{$shelf}')";
 
   if(mysql_query($sql)){
     echo '<script>location="../../product.php"</script>';

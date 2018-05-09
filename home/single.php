@@ -10,17 +10,25 @@
 
 	$commentsql = "select comment.*, users.username uname, users.img uimg from comment, users where comment.shop_id='{$shop_id}' and comment.user_id=users.id";
 	$commentrst = mysql_query($commentsql);
-	$commentrow = mysql_fetch_assoc($commentrst);
 	
-	// while(){
-	// 	$singlearr[] = $singlerow;
-	// }
+	while($commentrow = mysql_fetch_assoc($commentrst)){
+		$commentarr[] = $commentrow;
+	};
+	
+	$commentnumsql = "select count(*) num from comment where shop_id='{$shop_id}'";
+	$commentnumrst = mysql_query($commentnumsql);
+	$commentnumrow = mysql_fetch_assoc($commentnumrst);
+	if($commentnumrow){
+		$commentnum = $commentnumrow['num'];
+	}else{
+		$commentnum = 0;
+	}
  ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Single</title>
+<title>商品详情</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -255,7 +263,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<div class="col-md-8 single-right">
-				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-8 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+				<!-- <img src="../public/uploads/thumb_<?php echo $singlerow['img'];?>" alt="" style="width:400px;"> -->
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="../public/uploads/thumb_<?php echo $singlerow['img'];?>">
@@ -277,7 +286,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 					<!-- flixslider -->
 				</div>
-				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
+				<div class="col-md-4 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
 					<h3><?php echo $singlerow['name'];?></h3>
 					<h4><span class="item_price">￥<?php echo $singlerow['price']; ?></h4>
 					<div class="description">
@@ -299,7 +308,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">商品描述</a></li>
-							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">商品评论</a></li>
+							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">商品评论（<?php echo $commentnum; ?>）</a></li>
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
@@ -307,22 +316,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<p><?php echo $singlerow['content'];?></p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
-								
+							<?php if($commentarr){
+									 for($i=0; $i<sizeof($commentarr); $i++){?>
 								<div class="bootstrap-tab-text-grids">
 									<div class="bootstrap-tab-text-grid">
 										<div class="bootstrap-tab-text-grid-left">
-											<img src="../public/uploads/thumb_<?php echo $commentrow['uimg'];?>" style="border-radius:50%;border:1px solid #ddd;width:100px;height:100px;" alt=" " class="img-responsive" />
+											<img src="../public/uploads/thumb_<?php echo $commentarr[$i]['uimg'];?>" style="border-radius:50%;border:1px solid #ddd;width:100px;height:100px;" alt=" " class="img-responsive" />
 										</div>
 										<div class="bootstrap-tab-text-grid-right">
 											<ul>
-												<li><a href="#"><?php echo $commentrow['uname'];?></a></li>
+												<li><a href="#"><?php echo $commentarr[$i]['uname'];?></a></li>
 											</ul>
-											<p><?php echo $commentrow['content']; ?></p>
-											<p><?php echo date("Y-m-d H:i", $commentrow['time']);?></p>
+											<p><?php echo $commentarr[$i]['content']; ?></p>
+											<p><?php echo date("Y-m-d H:i", $commentarr[$i]['time']);?></p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
+								
+								
+								
+								
+								
+								
 								</div>
+								<?php }} ?>
 							</div>
 						</div>
 					</div>

@@ -96,6 +96,7 @@
             库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存<span>*</span>：
             <input type="text" name="stock" value="<?php echo $row['stock']; ?>">
         </p>
+        <p>商品描述 ：<input type="text" name="content" value="<?php echo $row['content']; ?>"></p>
         <p class="sure">
             <a href="../../product.php"class="del">取消</a>
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>" style="display:none;">

@@ -1,7 +1,25 @@
+<?php
+	session_start();
+	include '../public/common/config.php';
+
+	$shop_id = $_GET['shop_id'];
+
+	$shosql = "select * from shop where id='{$shop_id}'";
+	$shoprst = mysql_query($shosql);
+	$shoprow = mysql_fetch_assoc($shoprst);
+
+	$_SESSION['shops'][$shop_id] = $shoprow;
+	if($shoprow){
+		$_SESSION['shops'][$shop_id]['num'] = 1;
+	}
+
+	print_r($_SESSION['shops']);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Checkout</title>
+<title>购物车</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -212,102 +230,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<table class="timetable_sub">
 					<thead>
 						<tr>
-							<th>SL No.</th>	
-							<th>Product</th>
-							<th>Quality</th>
-							<th>Product Name</th>
-							<th>Service Charges</th>
-							<th>Price</th>
-							<th>Remove</th>
+							<th>商品图片</th>
+							<th>商品数量</th>
+							<th>商品名称</th>
+							<th>商品单价</th>
+							<th>总价</th>
+							<th>删除</th>
 						</tr>
 					</thead>
-					<tr class="rem1">
-						<td class="invert">1</td>
-						<td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" " class="img-responsive" /></a></td>
+					<?php
+						// for($i=0; $i<=sizeof($_SESSION['shops']); $i++){
+							foreach($_SESSION['shops'] as $shop){
+					?>	
+					<tr class="">
+						<td class="invert-image"><a href="single.html"><img src="../public/uploads/thumb_<?php echo $shop['img']; ?>" alt=" " class="img-responsive" /></a></td>
 						<td class="invert">
 							 <div class="quantity"> 
 								<div class="quantity-select">                           
 									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
+									<div class="entry value"><span><?php echo $shop['num']; ?></span></div>
 									<div class="entry value-plus active">&nbsp;</div>
 								</div>
 							</div>
 						</td>
-						<td class="invert">Black Shoe</td>
-						<td class="invert">$5.00</td>
-						<td class="invert">$290.00</td>
+						<td class="invert"><?php echo $shop['name']; ?></td>
+						<td class="invert">￥<?php echo $shop['price']; ?></td>
+						<td class="invert">￥<?php echo $shop['price']*$shop['num']; ?></td>
 						<td class="invert">
 							<div class="rem">
 								<div class="close1"> </div>
 							</div>
 							<script>$(document).ready(function(c) {
 								$('.close1').on('click', function(c){
-									$('.rem1').fadeOut('slow', function(c){
-										$('.rem1').remove();
+									$('<?php echo $i+1; ?>').fadeOut('slow', function(c){
+										$('<?php echo $i+1; ?>').remove();
 									});
 									});	  
 								});
 						   </script>
 						</td>
 					</tr>
-					<tr class="rem2">
-						<td class="invert">2</td>
-						<td class="invert-image"><a href="single.html"><img src="images/30.jpg" alt=" " class="img-responsive" /></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Centre Table</td>
-						<td class="invert">$5.00</td>
-						<td class="invert">$250.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close2"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close2').on('click', function(c){
-									$('.rem2').fadeOut('slow', function(c){
-										$('.rem2').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
-					<tr class="rem3">
-						<td class="invert">3</td>
-						<td class="invert-image"><a href="single.html"><img src="images/11.jpg" alt=" " class="img-responsive" /></a></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>1</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
-								</div>
-							</div>
-						</td>
-						<td class="invert">Stone Bangles</td>
-						<td class="invert">$5.00</td>
-						<td class="invert">$299.00</td>
-						<td class="invert">
-							<div class="rem">
-								<div class="close3"> </div>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close3').on('click', function(c){
-									$('.rem3').fadeOut('slow', function(c){
-										$('.rem3').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
+					<?php } ?>
+		
 								<!--quantity-->
 									<script>
 									$('.value-plus').on('click', function(){

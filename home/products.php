@@ -7,7 +7,7 @@
 	$class_id = $_GET['class_id'];
 	$brand_id = $_GET['brand_id'];
 
-	$totalshopsql = "select shop.* from shop, brand where shop.brand_id='{$brand_id}' and brand.class_id='{$class_id}' group by shop.id";
+	$totalshopsql = "select shop.* from shop, brand where shop.brand_id='{$brand_id}' and brand.class_id='{$class_id}' and shop.shelf=1 group by shop.id";
 	$totalshoprst = mysql_query($totalshopsql);
 	while($totalshoprow=mysql_fetch_assoc($totalshoprst)){
 		$totalshoparr[] = $totalshoprow;
@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Products</title>
+<title>商品分类</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

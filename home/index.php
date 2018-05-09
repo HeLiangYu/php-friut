@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>首页</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 							<h3> <div class="total">
 								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 								<img src="images/bag.png" alt="" />
@@ -251,7 +251,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h4><a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><?php echo $shopnewarr[$i]['name'];?></a></h4>
 						<p><?php echo $shopnewarr[$i]['cname'];?></p>
 						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="#">添加到购物车</a></p>
+							<p><span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="checkout.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">添加到购物车</a></p>
 						</div>
 					</div>
 				</div>

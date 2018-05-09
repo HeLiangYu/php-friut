@@ -68,12 +68,13 @@
 
                 <table class="details">
                     <tr>
-                        <th class="label">商品编号</th>
-                        <th class="iforma">商品名称</th>
+                        <th class="dispaly">商品编号</th>
+                        <th class="name">商品名称</th>
                         <th class="dispaly">商品分类</th>
                         <th class="name">商品类别</th>
                         <th class="name">商品价格</th>
                         <th class="iforma">商品图片</th>
+                        <th class="iforma">商品描述</th>
                         <th class="now">商品库存</th>
                         <th class="now">上下架</th>
                         <th class="opret">操作</th>
@@ -83,12 +84,13 @@
                          foreach($pagerows as $row){    
                     ?>
                     <tr>
-                        <td class="name"><span><?php echo $row['id']; ?></span></td>
-                        <td class="iforma"><span><?php echo $row['name']; ?></span></td>
+                        <td class="dispaly"><span><?php echo $row['id']; ?></span></td>
+                        <td class="name"><span><?php echo $row['name']; ?></span></td>
                         <td class="label"><span><?php echo $row['cname']; ?></span></td>
                         <td class="price"><span><?php echo $row['bname']; ?></span></td>
                         <td class="name"><span>￥ <?php echo $row['price']; ?>/kg</span></td>
                         <td class="now"><img src="../public/uploads/thumb_<?php echo $row['img']; ?>" style="width:100px;" /></td>
+                        <td><span><?php echo $row['content']; ?></span></td>
                         <td class="dispaly"><span><?php echo $row['stock']; ?></span></td>
                         <td class="dispaly">
                             <span>
@@ -167,6 +169,7 @@
                  库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存<span>*</span>：
                 <input type="text" name="stock">
             </p>
+            <p>商品描述 ：<input type="text" name="content"></p>
             <p class="sure">
                 <a href="product.php"class="del">取消</a>
                 <input type="submit" value="确 认" class="ok" onfocus="this.blur();">
