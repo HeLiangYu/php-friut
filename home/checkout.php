@@ -9,11 +9,12 @@
 	$shoprow = mysql_fetch_assoc($shoprst);
 
 	$_SESSION['shops'][$shop_id] = $shoprow;
-	if($shoprow){
+	if(sizeof($_SESSION['shops']) > 0){
 		$_SESSION['shops'][$shop_id]['num'] = 1;
 	}
 
-	print_r($_SESSION['shops']);
+
+	// print_r($_SESSION['shops']);
 ?>
 
 <!DOCTYPE html>
@@ -197,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 							<h3> <div class="total">
 								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
 								<img src="images/bag.png" alt="" />
@@ -225,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- checkout -->
 	<div class="checkout">
 		<div class="container">
-			<h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>3 Products</span></h3>
+			<h3 class="animated wow slideInLeft" data-wow-delay=".5s">您的购物车里现在有: <span> <?php if(sizeof($_SESSION['shops']>0)){ echo sizeof($_SESSION['shops']);}else{ echo 0;} ?> </span>件商品</h3>
 			<div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
 				<table class="timetable_sub">
 					<thead>
@@ -239,17 +240,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>
 					</thead>
 					<?php
-						// for($i=0; $i<=sizeof($_SESSION['shops']); $i++){
+							if(sizeof($_SESSION['shops']) > 0){
 							foreach($_SESSION['shops'] as $shop){
 					?>	
-					<tr class="">
+					<tr class="<?php echo $shop['id']; ?>">
 						<td class="invert-image"><a href="single.html"><img src="../public/uploads/thumb_<?php echo $shop['img']; ?>" alt=" " class="img-responsive" /></a></td>
 						<td class="invert">
 							 <div class="quantity"> 
-								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
+								<div class="quantity-select">
+									<a href="./api/shopCar/cut.php?id=<?php echo $shop['id']; ?>">
+										<div class="entry value-minus">&nbsp;</div>
+									</a>                      
 									<div class="entry value"><span><?php echo $shop['num']; ?></span></div>
-									<div class="entry value-plus active">&nbsp;</div>
+									<a href="./api/shopCar/add.php?id=<?php echo $shop['id']; ?>">
+										<div class="entry value-plus active">&nbsp;</div>
+									</a> 
 								</div>
 							</div>
 						</td>
@@ -258,19 +263,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<td class="invert">￥<?php echo $shop['price']*$shop['num']; ?></td>
 						<td class="invert">
 							<div class="rem">
-								<div class="close1"> </div>
+							<a href="./api/shopCar/delete.php?id=<?php echo $shop['id']; ?>">
+								<div class="close1 <?php echo $shop['id']; ?>"> </div>
+							</a>
 							</div>
-							<script>$(document).ready(function(c) {
-								$('.close1').on('click', function(c){
-									$('<?php echo $i+1; ?>').fadeOut('slow', function(c){
-										$('<?php echo $i+1; ?>').remove();
-									});
-									});	  
-								});
-						   </script>
 						</td>
 					</tr>
-					<?php } ?>
+					<?php }} ?>
 		
 								<!--quantity-->
 									<script>
@@ -289,17 +288,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="checkout-left">	
 				<div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-					<h4>Continue to basket</h4>
+					<h4>购物车总计</h4>
 					<ul>
-						<li>Product1 <i>-</i> <span>$250.00 </span></li>
-						<li>Product2 <i>-</i> <span>$290.00 </span></li>
-						<li>Product3 <i>-</i> <span>$299.00 </span></li>
-						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-						<li>Total <i>-</i> <span>$854.00</span></li>
+					<?php
+							$total = 0;
+							if(sizeof($_SESSION['shops']) > 0){
+							foreach($_SESSION['shops'] as $shop){
+								$total += $shop['num'] * $shop['price'];
+					?>	
+						<li><?php echo $shop['name']; ?> <i>-</i> <span>￥<?php echo $shop['price']; ?> </span></li>
+					<?php }} ?>	
+						<li>总计 <i>-</i> <span>￥<?php echo $total; ?></span></li>
 					</ul>
 				</div>
 				<div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+					<a href="index.php"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
