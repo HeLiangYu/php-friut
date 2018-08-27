@@ -61,8 +61,8 @@
                 <p class="add"><input type="text" value="新增用户"  onfocus="this.blur()" class="add_newAccount"></p>
                 <table class="details">
                     <tr>
-                        <th class="name">商家账号</th>
-                        <th class="class">商家名称</th>
+                        <th class="name">用户账号</th>
+                        <th class="class">用户名称</th>
                         <th class="opret">操作</th>
                     </tr>
 

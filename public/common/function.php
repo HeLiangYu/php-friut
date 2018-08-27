@@ -34,7 +34,5 @@
     $file = basename($simg);
     $save = $dir.'/'.'thumb_'.$file;
     $imageout($dimgr, $save);
-    
-    
   }
 ?>

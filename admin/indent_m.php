@@ -10,7 +10,7 @@
     $page = new Page('',$sql,$current_page,7,"?page=");
     $pagerows = $page->list;
     
-    $rst = mysql_query($sql); 
+    $rst = mysql_query($sql);
 ?>
 
 <!DOCTYPE html>

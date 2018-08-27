@@ -10,6 +10,7 @@
   $brand_id = $_POST['brand_id'];
   $shelf = $_POST['shelf'];  
   $stock = $_POST['stock'];
+  $content - $_POST['content'];
 
   //图片上传
   $src = $_FILES['img']['tmp_name'];
@@ -19,15 +20,14 @@
   // 等比例缩放图片
   if(move_uploaded_file($src, $dst)){
     $newname = basename($dst);
-    thumb($dst, 200, 200);
+    thumb($dst, 400, 400);
   };
-
   
   
   // $name = $_POST['name'];
   // $class_id = $_POST['class_id'];
 
-  $sql = "insert into shop(name, img, price, stock, brand_id, shelf) values('{$name}','{$newname}', '{$price}', '{$stock}', '{$brand_id}', '{$shelf}')";
+  $sql = "insert into shop(name, img, price, stock, brand_id, shelf, content) values('{$name}','{$newname}', '{$price}', '{$stock}', '{$brand_id}', '{$shelf}', '{$content}')";
 
   if(mysql_query($sql)){
     echo '<script>location="../../product.php"</script>';

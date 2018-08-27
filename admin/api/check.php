@@ -1,7 +1,7 @@
 <?php 
   // 管理员登录
-  header("Content-type: text/html; charset=utf-8"); 
   session_start();
+  header("Content-type: text/html; charset=utf-8"); 
   include '../../public/common/config.php';
 
   $username = $_POST['username'];
@@ -11,6 +11,7 @@
 
   $rst = mysql_query($sql);
   $row = mysql_fetch_assoc($rst);
+  echo $row;
 
   if($row){
     $_SESSION['admin_username'] = $username;
@@ -19,6 +20,6 @@
 
     echo "<script>location='../indent_m.php'</script>";
   }else{
-    echo "<script>alert('用户名或密码错误，请重新登录');location='../index.php'</script>";
+    // echo "<script>alert('用户名或密码错误，请重新登录');location='../index.php'</script>";
   }
 ?>

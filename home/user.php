@@ -1,16 +1,22 @@
+
 <?php 
 	session_start();
 	include '../public/common/config.php';
-	include './api/link.php';
+	include './api/adv.php';
 	include './api/newp.php';
 	include './api/photo.php';
-	include './api/adv.php';
+	include './api/link.php';
+	
+	$userid = $_SESSION['home_userid'];
+	$sql = "select * from users where id='{$userid}'";
+	$sqlrst = mysql_query($sql);
+	$row = mysql_fetch_assoc($sqlrst);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>首页</title>
+<title>个人中心</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,32 +27,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for-mobile-apps -->
 <link rel="shortcut icon" href="./images/logo.ico">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/new.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' type='text/css'>
-	<link rel="stylesheet" href="css/edslider.css">
-	<link rel="stylesheet" href="css/eestyles.css">
-	<link rel="stylesheet" href="css/animate-custom.css">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
 <!-- //js -->
 <!-- cart -->
-<script src="js/simpleCart.min.js"></script>
+	<script src="js/simpleCart.min.js"> </script>
 <!-- cart -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- timer -->
-<link rel="stylesheet" href="css/jquery.countdown.css" />
-<!-- //timer -->
 <!-- animation-effect -->
 <link href="css/animate.min.css" rel="stylesheet"> 
-<style>
-	/* .banner{
-		background: url(<?php  ?>) no-repeat 0px 0px;
-	} */
-</style>
 <script src="js/wow.min.js"></script>
 <script>
  new WOW().init();
@@ -91,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div> 
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.php" class="act">首页</a></li>	
+							<li class=""><a href="index.php" class="">首页</a></li>	
 							<!-- Mega Menu -->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">进口水果 <b class="caret"></b></a>
@@ -125,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</ul>
 							</li>
-							<li><a href="user.php">个人中心</a></li>
+							<li class="active"><a href="user.php" class="act">个人中心</a></li>
 						</ul>
 					</div>
 					</nav>
@@ -159,110 +155,121 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
-<div class="banner" style="min-height:570px;">
-				<div class="container">
-			<ul class="mySlideshow" style="min-height:570px;">
-				<li class="first">
-					<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[0]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-				<li class="second">
-				<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[1]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-				<li class="third">
-				<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[2]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-			</ul>
-		<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="js/jquery.edslider.js"></script>
-	<script>
-		$(document).ready(function(){
-			//Call plugin
-			$('.mySlideshow').edslider({
-				width : '100%',
-			});
-		});
-	</script>
-			</div>
-		</div>
-	</div>
-<!-- //banner -->
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-		<div class="container"> 
-			<div class="banner-bottom-grids">
-				<div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-					<div class="grid">
-						<figure class="effect-julia">
-							<a><img src="../public/uploads/<?php echo $littleadvarr[0]['img']; ?>" alt=" " class="img-responsive" /></a>
-							<figcaption>
-								<h3>鲜果 <span>Store</span><i> in online shopping</i></h3>
-							</figcaption>			
-						</figure>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".5s">
-					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="../public/uploads/<?php echo $littleadvarr[1]['img']; ?>" alt=" " class="img-responsive" />
-						</div>
-						<div class="banner-bottom-grid-left1-pos">
-							<p>Discount 45%</p>
-						</div>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<div class="banner-bottom-grid-left-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="../public/uploads/<?php echo $littleadvarr[2]['img']; ?>" alt=" " class="img-responsive" />
-						</div>
-						<div class="grid-left-grid1-pos">
-							<p>top and classic designs <span>2016 Collection</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //banner-bottom -->
-<!-- collections -->
-	<div class="new-collections">
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
 		<div class="container">
-			<h3 class="animated wow zoomIn" data-wow-delay=".5s">新 生 鲜</h3>
-			<p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
-			<div class="new-collections-grids">
-				<?php for($i=0; $i<sizeof($shopnewarr); $i++){ ?>
-					<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
-						<div class="new-collections-grid1-image">
-							<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>" class="product-image"><img style="height:231px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img']; ?>" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">详情</a>
-							</div>
-						</div>
-						<h4><a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><?php echo $shopnewarr[$i]['name'];?></a></h4>
-						<p><?php echo $shopnewarr[$i]['cname'];?></p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="checkout.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">添加到购物车</a></p>
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
+				<li class="active">个人中心</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+	<div class="" id="person1">
+		<div class="container">
+			<div class="col-md-4 products-left">
+				<div class="categories animated wow slideInUp" data-wow-delay=".5s"  style="text-align: center !important;padding: 1em 0 !important;margin: 0;">
+					<a href="javascript:"><?php  echo $row['username']?></a>
+					<div class="products-right-grids-position animated wow slideInRight procucts-left" style="margin-top:2em;">
+						<img src="../public/uploads/thumb_<?php  echo $row['img']?>" alt="" style="border-radius:50%;width:200px;height:200px;border:1px solid #999;">
+					</div>
+				</div>
+			</div>	
+			<div class="col-md-8 products-right">
+				<div class="order">
+					<h4>我的订单</h4>
+					<?php
+						$sql = "select indent.*, status.name as statusname from indent, status where indent.status_id=status.id and indent.user_id='{$_SESSION['home_userid']}' group by indent.code";
+						$rst = mysql_query($sql);
+						while($orderg = mysql_fetch_assoc($rst)){
+							$orderarr[] = $orderg;
+						}
+					?>
+					<div>
+						<div>
+							<table>
+								<tr>
+									<th>订单号</th>
+									<th>下单时间</th>
+									<th>订单状态</th>
+									<th>查看详情</th>
+									<th>操作</th>
+								</tr>
+								<?php foreach($orderarr as $oitem){ ?>
+								<tr>
+									<td><?php echo $oitem['code'];?></td>
+									<td><?php echo date("Y-m-d", $oitem['time']);?></td>
+									<td><?php echo $oitem['statusname'];?></td>
+									<td><a href="./detail.php?code=<?php echo $oitem['code'];?>">详情</a></td>
+									<td>
+										<?php if($oitem['statusname'] == '已完成'){ ?>
+											<a href="./comment.php?code=<?php echo $oitem['code'];?>">请评价</a>
+										<?php }else if($oitem['statusname'] == '已评价'){ ?>
+											<span>订单已完成</span>
+										<?php }else{ ?>
+											<a href="./commit.php?code=<?php echo $oitem['code'];?>">确认收货</a>
+										<?php } ?>
+									</td>
+								</tr>
+							<?php }?>
+							</table>
+							
+								
 						</div>
 					</div>
 				</div>
-				<?php }?>
-				<div class="clearfix"> </div>
-			</div>
+				<div class="addr">
+					<h4>我的地址</h4>
+					<div>
+						<h5>添加新地址</h5>
+						<form action="./api/addr/add.php" method="post">
+							<p>姓名<span class="red">*</span>：<input name="username" type="text" required=" " placeholder="请如实填写您的姓名"></p>
+							<p>地址<span class="red">*</span>：<input name="addr" type="text" required=" " placeholder="请如实填写您的地址"></p>
+							<p>电话<span class="red">*</span>：<input name="tel" type="text" required=" " placeholder="请如实填写您的联系电话"></p>
+							<p>邮箱 ：<input name="email" type="eamil" placeholder="请如实填写您的邮箱"></p>
+							<input type="hidden" value="<?php echo $_SESSION['home_userid'];?>" name="userid">
+							<p><input type="submit" value="确定" class="submit"></p>
+						</form>
+					</div>
+					<div>
+						<table>
+						<?php
+							$newsql = "select * from touch where user_id='{$userid}'";
+							$newrst = mysql_query($newsql);
+							while($newrow = mysql_fetch_assoc($newrst)){
+								$newarr[] =$newrow; 
+							}
+							if($newarr){
+						?>
+							<tr>
+								<!-- <th>默认地址</th> -->
+								<th>收货人</th>
+								<th>收货地址</th>
+								<th>联系电话</th>
+								<th>邮箱</th>
+								<th>操作</th>
+							</tr>
+						<?php 
+						
+							foreach($newarr as $item){ ?>
+							<tr>
+								<!-- <td><input type="radio"></td> -->
+								<td><?php echo $item['name'];?></td>
+								<td><?php echo $item['addr'];?></td>
+								<td><?php echo $item['tel'];?></td>
+								<td><?php echo $item['email'];?></td>
+								<td><a href="./change.php?id=<?php echo $item[id]; ?>">修改</a>|<a href="./api/addr/delete.php?id=<?php echo $item[id]; ?>">删除</a></td>
+							</tr>
+							<?php }}?>
+							</table>
+					</div>
+				</div>
+			</div>		
 		</div>
 	</div>
+<!-- //mail -->
 <!-- footer -->
-	<div class="footer">
+<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
@@ -298,6 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+</div>
 <!-- //footer -->
 </body>
 </html>

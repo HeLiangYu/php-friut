@@ -2515,7 +2515,7 @@ label.radio {
 }
 
 .bootstrap-tab-text-grids {
-    margin: 3em 0 0 5em;
+    margin: 2em 0 0 1em;
 }
 
 .bootstrap-tab-text-grid-right p {
@@ -2582,56 +2582,6 @@ label.radio {
 .header-grid-left ul li.active a {
     color: #d8703f;
 }
-
-
-/*-- Ratings --*/
-
-.rating1 {
-    direction: ltr;
-}
-
-.starRating:not(old) {
-    display: inline-block;
-    height: 18px;
-    width: 100px;
-    overflow: hidden;
-}
-
-.starRating:not(old)>input {
-    margin-right: -26%;
-    opacity: 0;
-}
-
-.starRating:not(old)>label {
-    float: right;
-    background: url(../images/1.png);
-    background-size: contain;
-    margin-right: 2px;
-}
-
-.starRating:not(old)>label:before {
-    content: '';
-    display: block;
-    width: 18px;
-    height: 18px;
-    background: url(../images/2.png);
-    background-size: contain;
-    opacity: 0;
-    transition: opacity 0.2s linear;
-}
-
-.starRating:not(old)>label:hover:before,
-.starRating:not(old)>label:hover~label:before,
-.starRating:not(:hover)> :checked~label:before {
-    opacity: 1;
-}
-
-
-/*-- //Ratings --*/
-
-
-/*-- //single --*/
-
 
 /*-- login --*/
 
@@ -3022,7 +2972,7 @@ td.invert-image a img {
     float: right;
 }
 
-.checkout-left-basket ul li:nth-child(5) {
+/* .checkout-left-basket ul li:nth-child(5) {
     font-size: 1em;
     color: #212121;
     font-weight: 600;
@@ -3030,7 +2980,7 @@ td.invert-image a img {
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
     margin: 2em 0 0;
-}
+} */
 
 .checkout-right-basket a {
     padding: 10px 30px;
@@ -4724,3 +4674,4 @@ td.invert-image a img {
         text-align: left;
     }
 }
+

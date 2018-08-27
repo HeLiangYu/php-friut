@@ -18,8 +18,8 @@
   <div class="mask" style="display:block;">
         <form action="../../api/user/reset.php" method="post" >
         <div class="recharge public_two"  style="display:block;margin-top:20%;">
-          <p class="out_header">重置商家密码</p>
-          <p class="name">确定要重置商家<span>【<?php echo $username; ?>】</span>密码吗？重置后的密码是123456</p>
+          <p class="out_header">重置用户密码</p>
+          <p class="name">确定要重置用户<span>【<?php echo $username; ?>】</span>密码吗？重置后的密码是123456</p>
           <p class="sure">
             <a href="../../business.php" class="del" type="reset">取消</a>
             <input type="text" name="id" value="<?php echo $id; ?>" style="display:none;">

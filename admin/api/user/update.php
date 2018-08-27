@@ -6,7 +6,7 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
   
-  $sql="update users set username='{$username}', password='{$password}' where id={$id}";
+  $sql="update users set username='{$username}', password=MD5('{$password}') where id={$id}";
 
   if(mysql_query($sql)){
     echo '<script>location="../../business.php"</script>';

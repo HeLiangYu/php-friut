@@ -1,5 +1,10 @@
 <?php
+	session_start();
 	include '../public/common/config.php';
+	include './api/adv.php';
+	include './api/newp.php';
+	include './api/photo.php';
+	include './api/link.php';
 
 	$shop_id = $_GET['shop_id'];
 
@@ -10,17 +15,25 @@
 
 	$commentsql = "select comment.*, users.username uname, users.img uimg from comment, users where comment.shop_id='{$shop_id}' and comment.user_id=users.id";
 	$commentrst = mysql_query($commentsql);
-	$commentrow = mysql_fetch_assoc($commentrst);
 	
-	// while(){
-	// 	$singlearr[] = $singlerow;
-	// }
+	while($commentrow = mysql_fetch_assoc($commentrst)){
+		$commentarr[] = $commentrow;
+	};
+	
+	$commentnumsql = "select count(*) num from comment where shop_id='{$shop_id}'";
+	$commentnumrst = mysql_query($commentnumsql);
+	$commentnumrow = mysql_fetch_assoc($commentnumrst);
+	if($commentnumrow){
+		$commentnum = $commentnumrow['num'];
+	}else{
+		$commentnum = 0;
+	}
  ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Single</title>
+<title>商品详情</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,6 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
+<link rel="shortcut icon" href="./images/logo.ico">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
@@ -54,30 +68,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
-	<div class="header">
+<div class="header">
 		<div class="container">
 			<div class="header-grid">
 				<div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
 					<ul>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">@example.com</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 <span>567</span> 892</li>
-						<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.html">Login</a></li>
-						<li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.html">Register</a></li>
-					</ul>
-				</div>
-				<div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<ul class="social-icons">
-						<li><a href="#" class="facebook"></a></li>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="instagram"></a></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">23621@163.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+						<?php if(!$_SESSION['home_userid']){ ?>
+							<li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="login.php">登录</a></li>
+							<li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href="register.php">注册</a></li>
+						<?php }else{ ?>
+							<li><i class="glyphicon glyphicon-user" aria-hidden="true"></i><a href="./user.php"><?php echo $_SESSION['home_username'];?></a></li>
+							<li><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><a href="./api/logout.php" onclick="return confirm('确认退出系统账号吗？');">退出</a></li>
+						<?php } ?>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="logo-nav">
 				<div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-					<h1><a href="index.php">Best Store <span>Shop anywhere</span></a></h1>
+					<h1><a href="index.php"><img src="./images/logo.png" alt=""></a></h1>
 				</div>
 				<div class="logo-nav-left1">
 					<nav class="navbar navbar-default">
@@ -89,45 +100,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-					</div>
+					</div> 
 					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 						<ul class="nav navbar-nav">
-							<li><a href="index.php">Home</a></li>	
+							<li class="active"><a href="index.php" class="act">首页</a></li>	
 							<!-- Mega Menu -->
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">进口水果 <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="">
 											<ul class="multi-column-dropdown">
-												<h6>Men's Wear</h6>
-												<li><a href="products.html">Clothing</a></li>
-												<li><a href="products.html">Wallets</a></li>
-												<li><a href="products.html">Shoes</a></li>
-												<li><a href="products.html">Watches</a></li>
-												<li><a href="products.html">Accessories</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Women's Wear</h6>
-												<li><a href="products.html">Clothing</a></li>
-												<li><a href="products.html">Wallets,Bags</a></li>
-												<li><a href="products.html">Footwear</a></li>
-												<li><a href="products.html">Watches</a></li>
-												<li><a href="products.html">Accessories</a></li>
-												<li><a href="products.html">Jewellery</a></li>
-												<li><a href="products.html">Beauty & Grooming</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Kid's Wear</h6>
-												<li><a href="products.html">Kids Home Fashion</a></li>
-												<li><a href="products.html">Boy's Clothing</a></li>
-												<li><a href="products.html">Girl's Clothing</a></li>
-												<li><a href="products.html">Shoes</a></li>
-												<li><a href="products.html">Brand Stores</a></li>
+												<h6>进口水果</h6>
+												<?php foreach($jbrandarr as $jitem){ ?>
+													<li><a href="products.php?brand_id=<?php echo $jitem['id'] ;?>&class_id=<?php echo $jitem['class_id']; ?>"><?php echo $jitem['name'] ;?></a></li>
+												<?php } ?>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
@@ -135,58 +122,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">国产水果 <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
-										<div class="col-sm-4">
+										<div>
 											<ul class="multi-column-dropdown">
-												<h6>Home Collection</h6>
-												<li><a href="furniture.html">Cookware</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Dining Tables</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Home Decor</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Office Collection</h6>
-												<li><a href="furniture.html">Carpets</a></li>
-												<li><a href="furniture.html">Tables</a></li>
-												<li><a href="furniture.html">Sofas</a></li>
-												<li><a href="furniture.html">Shoe Racks</a></li>
-												<li><a href="furniture.html">Sockets</a></li>
-												<li><a href="furniture.html">Electrical Machines</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<h6>Decorations</h6>
-												<li><a href="furniture.html">Toys</a></li>
-												<li><a href="furniture.html">Wall Clock</a></li>
-												<li><a href="furniture.html">Lighting</a></li>
-												<li><a href="furniture.html">Top Brands</a></li>
+												<h6>国产水果</h6>
+												<?php foreach($gbrandarr as $gitem){ ?>
+													<li><a href="products.php?brand_id=<?php echo $gitem['id'] ;?>&class_id=<?php echo $gitem['class_id']; ?>"><?php echo $gitem['name'] ;?></a></li>
+												<?php } ?>
 											</ul>
 										</div>
 										<div class="clearfix"></div>
 									</div>
 								</ul>
 							</li>
-							<li><a href="short-codes.html">Short Codes</a></li>
-							<li><a href="mail.html">Mail Us</a></li>
+							<li><a href="user.php">个人中心</a></li>
 						</ul>
 					</div>
 					</nav>
 				</div>
 				<div class="logo-nav-right">
 					<div class="search-box">
-						<div id="sb-search" class="sb-search">
-							<form>
-								<input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
-								<input class="sb-search-submit" type="submit" value="">
-								<span class="sb-icon-search"> </span>
-							</form>
-						</div>
+				
 					</div>
 						<!-- search-scripts -->
 						<script src="js/classie.js"></script>
@@ -198,13 +156,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 							<h3> <div class="total">
-								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-								<img src="images/bag.png" alt="" />
+								<span>￥<?php if($_SESSION['total']){ echo $_SESSION['total']; }else{echo 0;} ?></span> (<span id="simpleCart_quantity" ><?php if($_SESSION['num']){ echo $_SESSION['num']; }else{echo 0;} ?></span> items)</div>
 							</h3>
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<h3 style="margin-top:5px;">
+							<p><a href="javascript:;" class="simpleCart_empty" style="color: #d8703f;"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color: #d8703f;"></i>&nbsp;&nbsp;购物车</a></p>
+						</h3>
 						<div class="clearfix"> </div>
 					</div>	
 				</div>
@@ -212,13 +171,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-<!-- //header -->
 <!-- breadcrumbs -->
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Single Page</li>
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
+				<li class="active">商品详情</li>
 			</ol>
 		</div>
 	</div>
@@ -226,36 +184,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- single -->
 	<div class="single">
 		<div class="container">
-			<div class="col-md-4 products-left">
-				<div class="categories animated wow slideInUp" data-wow-delay=".5s">
+		<div class="col-md-4 products-left">
+				<div class="categories animated wow slideInUp" data-wow-delay=".5s" style="margin-top:0;">
 					<h3>目 录</h3>
 					<ul class="cate">
-						<li><a href="products.html">Best Selling</a> <span>(15)</span></li>
-						<li><a href="products.html">Home Collections</a> <span>(16)</span></li>
+						<li><a href="javascript:">进口水果</a></li>
 							<ul>
-								<li><a href="products.html">Cookware</a> <span>(2)</span></li>
-								<li><a href="products.html">New Arrivals</a> <span>(0)</span></li>
-								<li><a href="products.html">Home Decore</a> <span>(1)</span></li>
+								<?php for($i=0; $i<sizeof($jbrandarr); $i++){?>
+									<li><a href="products.php?brand_id=<?php echo $jbrandarr[$i]['id'] ;?>&class_id=<?php echo $jbrandarr[$i]['class_id']; ?>"><?php echo $jbrandarr[$i]['name']; ?></a></li>
+								<?php } ?>
 							</ul>
-						<li><a href="products.html">Decorations</a> <span>(15)</span></li>
+						<li><a href="javascript:">国产水果</a></li>
 							<ul>
-								<li><a href="products.html">Wall Clock</a> <span>(2)</span></li>
-								<li><a href="products.html">New Arrivals</a> <span>(0)</span></li>
-								<li><a href="products.html">Lighting</a> <span>(1)</span></li>
-								<li><a href="products.html">Top Brands</a> <span>(0)</span></li>
+							<?php for($i=0; $i<sizeof($gbrandarr); $i++){?>
+									<li><a href="products.php?brand_id=<?php echo $jbrandarr[$i]['id'] ;?>&class_id=<?php echo $jbrandarr[$i]['class_id']; ?>"><?php echo $gbrandarr[$i]['name'] ?></a></li>
+								<?php } ?>
 							</ul>
 					</ul>
 				</div>
+				<div class="new-products animated wow slideInUp" data-wow-delay=".5s">
+					<h3>新生鲜</h3>
+					<div class="new-products-grids">
+					<?php for($i=0; $i<sizeof($shopnewarr); $i++){ ?>
+						<div class="new-products-grid" style="margin-bottom: 3em;">
+							<div class="new-products-grid-left">
+								<a href="single.php"><img style="height:120px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img'];?>" alt=" " class="img-responsive" /></a>
+							</div>
+							<div class="new-products-grid-right">
+								<h4><a href="single.php"><?php echo $shopnewarr[$i]['name'];?></a></h4>
+								<div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+									<p> <span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add"  href="checkout.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">添加到购物车</a></p>
+								</div>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					<?php }?>
+					</div>
+				</div>
 				<div class="men-position animated wow slideInUp" data-wow-delay=".5s">
-					<a href="single.html"><img src="images/29.jpg" alt=" " class="img-responsive" /></a>
+					<a href="single.php"><img src="../public/uploads/<?php echo $littleadvarr[1]['img'];?>" alt=" " class="img-responsive" /></a>
 					<div class="men-position-pos">
-						<h4>Summer collection</h4>
 						<h5><span>55%</span> Flat Discount</h5>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8 single-right">
-				<div class="col-md-5 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+				<div class="col-md-8 single-right-left animated wow slideInUp" data-wow-delay=".5s">
+				<!-- <img src="../public/uploads/thumb_<?php echo $singlerow['img'];?>" alt="" style="width:400px;"> -->
 					<div class="flexslider">
 						<ul class="slides">
 							<li data-thumb="../public/uploads/thumb_<?php echo $singlerow['img'];?>">
@@ -277,7 +252,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 					<!-- flixslider -->
 				</div>
-				<div class="col-md-7 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
+				<div class="col-md-4 single-right-left simpleCart_shelfItem animated wow slideInRight" data-wow-delay=".5s">
 					<h3><?php echo $singlerow['name'];?></h3>
 					<h4><span class="item_price">￥<?php echo $singlerow['price']; ?></h4>
 					<div class="description">
@@ -291,7 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span><?php echo $singlerow['stock'];?> kg</span>
 					</div>
 					<div class="occasion-cart">
-						<a class="item_add" href="#">添加到购物车 </a>
+						<a class="item_add" href="checkout.php?shop_id=<?php echo $singlerow['id']; ?>">添加到购物车 </a>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -299,7 +274,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 						<ul id="myTab" class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">商品描述</a></li>
-							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">商品评论</a></li>
+							<li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">商品评论（<?php echo $commentnum; ?>）</a></li>
 						</ul>
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
@@ -307,22 +282,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<p><?php echo $singlerow['content'];?></p>
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
-								
+							<?php if($commentarr){
+									 for($i=0; $i<sizeof($commentarr); $i++){?>
 								<div class="bootstrap-tab-text-grids">
 									<div class="bootstrap-tab-text-grid">
 										<div class="bootstrap-tab-text-grid-left">
-											<img src="../public/uploads/thumb_<?php echo $commentrow['uimg'];?>" style="border-radius:50%;border:1px solid #ddd;width:100px;height:100px;" alt=" " class="img-responsive" />
+											<img src="../public/uploads/thumb_<?php echo $commentarr[$i]['uimg'];?>" style="border-radius:50%;border:1px solid #ddd;width:100px;height:100px;" alt=" " class="img-responsive" />
 										</div>
 										<div class="bootstrap-tab-text-grid-right">
 											<ul>
-												<li><a href="#"><?php echo $commentrow['uname'];?></a></li>
+												<li><a href="javascript:"><?php echo $commentarr[$i]['uname'];?></a></li>
 											</ul>
-											<p><?php echo $commentrow['content']; ?></p>
-											<p><?php echo date("Y-m-d H:i", $commentrow['time']);?></p>
+											<p><?php echo $commentarr[$i]['content']; ?></p>
+											<p><?php echo date("Y-m-d H:i", $commentarr[$i]['time']);?></p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
+								
+								
+								
+								
+								
+								
 								</div>
+								<?php }} ?>
 							</div>
 						</div>
 					</div>
@@ -331,252 +314,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //single -->
-<!-- single-related-products -->
-	<div class="single-related-products">
-		<div class="container">
-			<h3 class="animated wow slideInUp" data-wow-delay=".5s">Related Products</h3>
-			<p class="est animated wow slideInUp" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
-			<div class="new-collections-grids">
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".5s">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/8.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Running Shoes</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">add to cart </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 new-collections-grid">
-					<div class="new-collections-grid1-sub">
-						<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".6s">
-							<div class="new-collections-grid1-image">
-								<a href="single.html" class="product-image"><img src="images/6.jpg" alt=" " class="img-responsive"></a>
-								<div class="new-collections-grid1-image-pos">
-									<a href="single.html">Quick View</a>
-								</div>
-								<div class="new-collections-grid1-right">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-							</div>
-							<h4><a href="single.html">Wall Lamp</a></h4>
-							<p>Vel illum qui dolorem eum fugiat.</p>
-							<div class="new-collections-grid1-left simpleCart_shelfItem">
-								<p><i>$480</i> <span class="item_price">$400</span><a class="item_add" href="#">add to cart </a></p>
-							</div>
-						</div>
-					</div>
-					<div class="new-collections-grid1-sub">
-						<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".7s">
-							<div class="new-collections-grid1-image">
-								<a href="single.html" class="product-image"><img src="images/9.jpg" alt=" " class="img-responsive"></a>
-								<div class="new-collections-grid1-image-pos">
-									<a href="single.html">Quick View</a>
-								</div>
-								<div class="new-collections-grid1-right">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/2.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/1.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-							</div>
-							<h4><a href="single.html">Wall Lamp</a></h4>
-							<p>Vel illum qui dolorem eum fugiat.</p>
-							<div class="new-collections-grid1-left simpleCart_shelfItem">
-								<p><i>$280</i> <span class="item_price">$150</span><a class="item_add" href="#">add to cart </a></p>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInLeft" data-wow-delay=".8s">
-						<div class="new-collections-grid1-image">
-							<a href="single.html" class="product-image"><img src="images/11.jpg" alt=" " class="img-responsive"></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.html">Quick View</a>
-							</div>
-							<div class="new-collections-grid1-right">
-								<div class="rating">
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/2.png" alt=" " class="img-responsive">
-									</div>
-									<div class="rating-left">
-										<img src="images/1.png" alt=" " class="img-responsive">
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-							</div>
-						</div>
-						<h4><a href="single.html">Stones Bangles</a></h4>
-						<p>Vel illum qui dolorem eum fugiat.</p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><i>$340</i> <span class="item_price">$257</span><a class="item_add" href="#">add to cart </a></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //single-related-products -->
-<!-- footer -->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-					<h3>About Us</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat 
-						non proident, sunt in culpa qui officia deserunt mollit.</span></p>
+				<div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+					<h3>关于我们</h3>
+					<p style="margin-bottom:6px;">我们致力于做快捷、优惠的生鲜网站</p>
+					<p style="margin-bottom:6px;">让您满意是我们的宗旨</p>
+					<p style="margin-bottom:6px;">我们时刻为您提供最新鲜、最优质的食材</p>
+					<p style="margin-bottom:6px;">我们致力于做快捷、优惠的生鲜网站</p>
+					<p style="margin-bottom:6px;">让您满意是我们的宗旨</p>
+					<p style="margin-bottom:6px;">我们时刻为您提供最新鲜、最优质的食材</p>
 				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-					<h3>Contact Info</h3>
+				<div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+					<h3>联系信息</h3>
 					<ul>
 						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:23621@163.com">23621@163.com</a></li>
 						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
 					</ul>
 				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-					<h3>Flickr Posts</h3>
+				<div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+					<h3>快速入口</h3>
+					<?php for($i=0; $i<sizeof($shopnnewarr); $i++){ ?>
 					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
+						<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><img src="../public/uploads/<?php echo $shopnnewarr[$i]['img']; ?>" alt=" " class="img-responsive" style="width:100px;height:80px;" /></a>
 					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
+					<?php }?>
 					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-					<h3>Blog Posts</h3>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/9.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">culpa qui officia deserunt</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="footer-grid-sub-grids">
-						<div class="footer-grid-sub-grid-left">
-							<a href="single.html"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-						</div>
-						<div class="footer-grid-sub-grid-right">
-							<h4><a href="single.html">Quis autem vel eum iure</a></h4>
-							<p>Posted On 25/3/2016</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-				<h2><a href="index.php">Best Store <span>shop anywhere</span></a></h2>
-			</div>
-			<div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-				<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+				<h2><a href="index.php"><img src="./images/logo57.gif"></a></h2>
 			</div>
 		</div>
 	</div>
+</div>
 <!-- //footer -->
 <!-- zooming-effect -->
 	<script src="js/imagezoom.js"></script>

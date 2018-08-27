@@ -8,7 +8,7 @@
   // print_r($_POST);
   // exit;
 
-  $sql = "insert into admin(username, password) values('{$username}', '{$password}')";
+  $sql = "insert into admin(username, password) values('{$username}', '{$password}'";
 
   if(mysql_query($sql)){
     echo '<script>location="../../admin.php"</script>';

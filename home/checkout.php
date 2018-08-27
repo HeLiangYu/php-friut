@@ -1,16 +1,41 @@
-<?php 
+<?php
 	session_start();
 	include '../public/common/config.php';
 	include './api/link.php';
 	include './api/newp.php';
 	include './api/photo.php';
 	include './api/adv.php';
+	if( !$_SESSION['home_userid']){
+		echo '<script>location="./login.php";</script>';
+		exit;
+	}
+
+	$shop_id = $_GET['shop_id'];
+
+	$shosql = "select * from shop where id='{$shop_id}'";
+	$shoprst = mysql_query($shosql);
+	$shoprow = mysql_fetch_assoc($shoprst);
+	if($shoprow){
+		$_SESSION['shops'][$shop_id] = $shoprow;
+		// if(sizeof($_SESSION['shops']) > 0){
+		$_SESSION['shops'][$shop_id]['num'] = 1;
+		// }
+		$_SESSION['num'] = sizeof($_SESSION['shops']);
+		
+	}
+	
+	$total = 0;
+	foreach($_SESSION['shops'] as $item){
+		$total += $item['num'] * $item['price'];
+	}
+	$_SESSION['total'] = $total;
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>首页</title>
+<title>购物车</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,32 +46,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //for-mobile-apps -->
 <link rel="shortcut icon" href="./images/logo.ico">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/new.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' type='text/css'>
-	<link rel="stylesheet" href="css/edslider.css">
-	<link rel="stylesheet" href="css/eestyles.css">
-	<link rel="stylesheet" href="css/animate-custom.css">
 <!-- js -->
 <script src="js/jquery.min.js"></script>
 <!-- //js -->
 <!-- cart -->
-<script src="js/simpleCart.min.js"></script>
+	<script src="js/simpleCart.min.js"> </script>
 <!-- cart -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- timer -->
-<link rel="stylesheet" href="css/jquery.countdown.css" />
-<!-- //timer -->
 <!-- animation-effect -->
 <link href="css/animate.min.css" rel="stylesheet"> 
-<style>
-	/* .banner{
-		background: url(<?php  ?>) no-repeat 0px 0px;
-	} */
-</style>
 <script src="js/wow.min.js"></script>
 <script>
  new WOW().init();
@@ -56,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
-	<div class="header">
+<div class="header">
 		<div class="container">
 			<div class="header-grid">
 				<div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
@@ -160,109 +176,107 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 <!-- //header -->
-<!-- banner -->
-<div class="banner" style="min-height:570px;">
-				<div class="container">
-			<ul class="mySlideshow" style="min-height:570px;">
-				<li class="first">
-					<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[0]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-				<li class="second">
-				<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[1]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-				<li class="third">
-				<a href="#" target="_blank" class="animated fadeInLeft">
-						<img src="../public/uploads/<?php echo $bigadvarr[2]['img']; ?>" style="width:100%;height:100%;" alt="Harley-Davidson">
-					</a>
-				</li>
-			</ul>
-		<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="js/jquery.edslider.js"></script>
-	<script>
-		$(document).ready(function(){
-			//Call plugin
-			$('.mySlideshow').edslider({
-				width : '100%',
-			});
-		});
-	</script>
-			</div>
-		</div>
-	</div>
-<!-- //banner -->
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-		<div class="container"> 
-			<div class="banner-bottom-grids">
-				<div class="banner-bottom-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-					<div class="grid">
-						<figure class="effect-julia">
-							<a><img src="../public/uploads/<?php echo $littleadvarr[0]['img']; ?>" alt=" " class="img-responsive" /></a>
-							<figcaption>
-								<h3>鲜果 <span>Store</span><i> in online shopping</i></h3>
-							</figcaption>			
-						</figure>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-left1 animated wow slideInUp" data-wow-delay=".5s">
-					<div class="banner-bottom-grid-left-grid left1-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="../public/uploads/<?php echo $littleadvarr[1]['img']; ?>" alt=" " class="img-responsive" />
-						</div>
-						<div class="banner-bottom-grid-left1-pos">
-							<p>Discount 45%</p>
-						</div>
-					</div>
-				</div>
-				<div class="banner-bottom-grid-right animated wow slideInRight" data-wow-delay=".5s">
-					<div class="banner-bottom-grid-left-grid grid-left-grid1">
-						<div class="banner-bottom-grid-left-grid1">
-							<img src="../public/uploads/<?php echo $littleadvarr[2]['img']; ?>" alt=" " class="img-responsive" />
-						</div>
-						<div class="grid-left-grid1-pos">
-							<p>top and classic designs <span>2016 Collection</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //banner-bottom -->
-<!-- collections -->
-	<div class="new-collections">
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
 		<div class="container">
-			<h3 class="animated wow zoomIn" data-wow-delay=".5s">新 生 鲜</h3>
-			<p class="est animated wow zoomIn" data-wow-delay=".5s">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-				deserunt mollit anim id est laborum.</p>
-			<div class="new-collections-grids">
-				<?php for($i=0; $i<sizeof($shopnewarr); $i++){ ?>
-					<div class="col-md-3 new-collections-grid">
-					<div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
-						<div class="new-collections-grid1-image">
-							<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>" class="product-image"><img style="height:231px;" src="../public/uploads/<?php echo $shopnewarr[$i]['img']; ?>" alt=" " class="img-responsive" /></a>
-							<div class="new-collections-grid1-image-pos">
-								<a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">详情</a>
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
+				<li class="active">购物车</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- checkout -->
+	<div class="checkout">
+		<div class="container">
+			<h3 class="animated wow slideInLeft" data-wow-delay=".5s">您的购物车里现在有: <span> <?php if(sizeof($_SESSION['shops']>0)){ echo sizeof($_SESSION['shops']);}else{ echo 0;} ?> </span>件商品</h3>
+			<div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
+			<?php if($_SESSION['shops']){?>
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>商品图片</th>
+							<th>商品数量</th>
+							<th>商品名称</th>
+							<th>商品单价</th>
+							<th>总价</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+					<?php
+							foreach($_SESSION['shops'] as $shop){
+					?>	
+					<tr class="<?php echo $shop['id']; ?>">
+						<td class="invert-image"><a href="single.html"><img src="../public/uploads/thumb_<?php echo $shop['img']; ?>" alt=" " class="img-responsive" /></a></td>
+						<td class="invert">
+							 <div class="quantity"> 
+								<div class="quantity-select">
+									<a href="./api/shopCar/cut.php?id=<?php echo $shop['id']; ?>">
+										<div class="entry value-minus">&nbsp;</div>
+									</a>                      
+									<div class="entry value"><span><?php echo $shop['num']; ?></span></div>
+									<a href="./api/shopCar/add.php?id=<?php echo $shop['id']; ?>">
+										<div class="entry value-plus active">&nbsp;</div>
+									</a> 
+								</div>
 							</div>
-						</div>
-						<h4><a href="single.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>"><?php echo $shopnewarr[$i]['name'];?></a></h4>
-						<p><?php echo $shopnewarr[$i]['cname'];?></p>
-						<div class="new-collections-grid1-left simpleCart_shelfItem">
-							<p><span class="item_price">￥<?php echo $shopnewarr[$i]['price'];?></span><a class="item_add" href="checkout.php?shop_id=<?php echo $shopnewarr[$i]['id']; ?>">添加到购物车</a></p>
-						</div>
-					</div>
-				</div>
+						</td>
+						<td class="invert"><?php echo $shop['name']; ?></td>
+						<td class="invert">￥<?php echo $shop['price']; ?></td>
+						<td class="invert">￥<?php echo $shop['price']*$shop['num']; ?></td>
+						<td class="invert">
+							<div class="rem">
+							<a href="./api/shopCar/delete.php?id=<?php echo $shop['id']; ?>">
+								<div class="close1 <?php echo $shop['id']; ?>"> </div>
+							</a>
+							</div>
+						</td>
+					</tr>
+					<?php } ?>
+		
+								<!--quantity-->
+									<script>
+									$('.value-plus').on('click', function(){
+										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+										divUpd.text(newVal);
+									});
+
+									$('.value-minus').on('click', function(){
+										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+										if(newVal>=1) divUpd.text(newVal);
+									});
+									</script>
+								<!--quantity-->
+				</table>
 				<?php }?>
+			</div>
+			<div class="checkout-left">	
+				<div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
+					<h4>购物车总计</h4>
+					<ul>
+					<?php
+							if(sizeof($_SESSION['shops']) > 0){
+							foreach($_SESSION['shops'] as $shop){
+					?>	
+						<li><?php echo $shop['name']; ?> <i>-</i> <span>￥<?php echo $shop['price']*$shop['num']; ?> </span></li>
+					<?php }} ?>	
+						<li>总计 <i>-</i> <span>￥<?php echo $_SESSION['total']; ?></span></li>
+						<li id="car">
+								<a href="./api/clear.php">清空购物车</a>
+								<a href="./order.php">结算</a>
+						</li>
+					</ul>
+				</div>
+				<div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+					<a href="index.php"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>继续购物</a>
+				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
+<!-- //checkout -->
 <!-- footer -->
-	<div class="footer">
+<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
@@ -298,6 +312,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+</div>
 <!-- //footer -->
 </body>
 </html>
